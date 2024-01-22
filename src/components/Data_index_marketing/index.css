@@ -1,0 +1,72 @@
+.teste {
+    margin-bottom: 10%;
+
+}
+.data-index-marketing {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.data-index-marketing > .top-left {
+    
+    width: 50%;
+
+    height: 20vh;
+
+    border-right: 1px solid #adaaaa;
+
+}
+
+.data-index-marketing > .top-right {
+
+    width: 50%;
+    height: 20vh;
+    border-right: 1px solid #adaaaa;
+
+}
+
+.data-index-marketing > .bottom-left {
+    
+    width: 50%;
+
+    height: 20vh;
+
+    border-right: 1px solid #adaaaa;
+
+}
+
+.data-index-marketing > .bottom-right {
+
+    width: 50%;
+    height: 20vh;
+    border-right: 1px solid #adaaaa;
+
+}
+
+.title-marketing {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.text-destac {
+    margin: 0;
+    color: #738E38;
+
+    padding-right: 4px;
+}
+
+.text-marketing {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    width: 70%;
+}

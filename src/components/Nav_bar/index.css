@@ -1,0 +1,43 @@
+.nav_bar {
+    width: 100%;
+    height: auto;
+
+    border-bottom: 1px solid #E5E5E5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_bar > .div_logo > .logo_img {
+    width: 75%;
+    height: auto;
+
+    margin-bottom: 4px;
+}
+
+@media(min-width: 200px){
+
+    .nav_bar > .div_logo {
+        width: 34%;
+    }
+        
+    
+}
+
+.nav_bar > .icon_menu {
+    color: #738E38;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn_menu {
+    width: 100%;
+
+    background-color: white;
+
+    border: none;
+
+    color: #738E38;
+}

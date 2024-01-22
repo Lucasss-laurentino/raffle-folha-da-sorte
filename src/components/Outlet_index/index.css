@@ -1,0 +1,68 @@
+.div-caps-main {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.div-text-main {
+    width: 70%;
+    height: auto;
+
+    text-align: center;
+
+    margin-top: 17%;
+}
+
+.div-text-main-hiden
+
+.text-bottom-title {
+
+    padding-top: 10px;
+    font-weight: lighter;
+}
+
+/* animação*/
+
+.hiden-body {
+    animation: hiden_body 1s 1 6ms forwards normal;
+}
+
+@keyframes hiden_body {
+    0% {
+        display: block;
+        width: 100%;
+        opacity: 1;
+    }
+   
+    50% {
+        opacity: 0;
+    }
+
+    51% {
+        display: none;
+    }
+
+    100% {
+        display: none;
+    }
+}
+
+.animate-old {
+    animation: animate-old 2s 1 6ms forwards normal;
+}
+
+@keyframes animate-old {
+    0% {
+        display: block;
+        opacity: 0;
+    }
+   
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}

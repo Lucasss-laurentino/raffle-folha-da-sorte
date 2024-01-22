@@ -1,0 +1,141 @@
+.login_header {
+    width: 100%;
+    height: auto;
+
+    padding-top: 15px;
+    padding-left: 5%;
+}
+.login_header > .div_logo_login {
+    width: 20%;
+    margin-bottom: 10px;
+
+    margin-left: -4%;
+}
+
+.logo_img {
+    width: 100%;
+}
+
+.div_form_login {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_form_login > form {
+    width: 90%;
+
+    padding-left: 5%;
+}
+
+.span_login {
+    color:#837d7d;
+    display: block;
+}
+
+.input_login {
+
+    width: 90%;
+
+    padding: 12px;
+    background-color:#F5F6F8;
+    border: none;
+    border-radius: 14px;
+
+    margin-top: 7px;
+    margin-bottom: 12%;
+
+    outline: none;
+}
+
+.input_error {
+    width: 90%;
+
+    padding: 12px;
+    background-color:#F5F6F8;
+    border: 1px solid #EF4A5B;
+    border-radius: 14px;
+
+    margin-top: 7px;
+
+    outline: none;
+
+}
+
+.input_error::placeholder {
+    color: #EF4A5B;
+}
+
+.text-error {
+    color: #EF4A5B;
+}
+
+.input_login::placeholder {
+    color: #837d7d;
+    font-weight: 370;
+}
+
+.color_strong{
+    color: #738E38;
+}
+
+.div_text_form_login {
+    width: 100%;
+    color: #837d7d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.text_form_login {
+
+    width: 90%;
+
+    font-size: 14px;
+
+}
+
+.btn_criar_conta {
+    width: 90%;
+    height: 44px;
+
+    padding: 10px;
+
+    color: white;
+    font-weight: 400;
+    background-color: #738E38;
+
+    border: 1px solid #738E38;
+
+    border-radius: 40px;
+
+    margin-top: 3%;
+
+    text-decoration: none;
+}
+.btn_criar_conta:active {
+
+    color: #738E38;
+    background-color: white;
+    border: 1px solid #738E38;
+
+    border-radius: 40px;
+
+    transition: 80ms ease all;
+    
+    transform-origin: top right;
+    transition: transform 50ms cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+
+.latest_text {
+
+    font-size: 12px !important;
+    padding-left: 5%;
+}

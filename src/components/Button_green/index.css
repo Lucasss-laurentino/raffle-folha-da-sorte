@@ -1,0 +1,43 @@
+.div-button-green {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    text-align: center;
+}
+
+.btn-green {
+    width: 70%;
+    height: 44px;
+
+    padding: 10px;
+
+    color: white;
+    font-weight: 400;
+    background-color: #738E38;
+
+    border: 1px solid #738E38;
+
+    border-radius: 40px;
+
+    margin-top: 8%;
+
+    text-decoration: none;
+}
+
+.btn-green:active {
+
+    color: #738E38;
+    background-color: white;
+    border: 1px solid #738E38;
+
+    border-radius: 40px;
+
+    transition: 80ms ease all;
+    
+    transform-origin: top right;
+    transition: transform 50ms cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
