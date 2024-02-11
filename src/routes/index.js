@@ -10,6 +10,10 @@ import { FormEditProvider } from '../Contexts/FormEditContext';
 import { Form_create_raffle } from '../components/Form_create_raffle';
 import { CreateUserProvider } from '../Contexts/CreateUserContext';
 import { LoginProvider } from '../Contexts/LoginContext';
+import { RaffleProvider } from '../Contexts/RaffleContext';
+import { ModalProvider } from '../Contexts/ModalContext';
+import { Minhas_rifas } from '../components/Minhas_rifas';
+import { Data_raffle } from '../components/Data_raffle';
 
 export default function appRoutes(){
 
@@ -18,13 +22,17 @@ export default function appRoutes(){
         <FormEditProvider>
         <CreateUserProvider>
         <LoginProvider>
+        <RaffleProvider>
+        <ModalProvider>
 
             <Router>
                 <Routes>
 
-                    <Route path='/' element={<Page_default />}>
-                        <Route path='/' element={<Outlet_index />} />
+                    <Route path="/" element={<Page_default />}>
+                        <Route path='/:logado?/:createRaffle?' element={<Outlet_index />} />
                         <Route path='/sorteio/:id' element={<Page_raffle />} />
+                        <Route path='/minhas_rifas' element={<Minhas_rifas />} />
+                        <Route path='/detalhes/:id' element={<Data_raffle />} />
                     </Route>
                     
                     <Route path='/' element={<Form />}>
@@ -36,6 +44,8 @@ export default function appRoutes(){
                 </Routes>
             </Router> 
             
+        </ModalProvider>                        
+        </RaffleProvider>
         </LoginProvider>                
         </CreateUserProvider>
         </FormEditProvider>      

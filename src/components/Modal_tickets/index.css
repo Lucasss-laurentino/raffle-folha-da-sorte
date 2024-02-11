@@ -1,0 +1,10 @@
+.div_tickets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div_tickets > container > hr {
+    display: 1;
+}

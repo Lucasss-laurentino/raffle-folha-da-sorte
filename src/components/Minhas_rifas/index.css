@@ -1,0 +1,44 @@
+.div-title-campanha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-title-campanha > h1 {
+    font-size: 30px;
+}
+
+.div-search {
+    border: 1px solid #cccccc;
+
+    border-radius: 10px;
+}
+
+.input-search {
+    width: 100%;
+
+    padding: 8px;
+
+    border: none;
+
+    outline: 0;
+
+    padding-left: 15px;
+
+    color:#9c9b9b;
+
+}
+
+.btn-criar-campanha {
+    width: 100%;
+
+    padding: 8px;
+
+    color: white;
+
+    background-color: #738E38;
+
+    border: none;
+
+    border-radius: 8px;
+}

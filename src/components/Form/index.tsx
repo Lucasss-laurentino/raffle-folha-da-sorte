@@ -21,10 +21,13 @@ export const Form = () => {
                     </div>
                     <hr />
 
-                    <Link to={url} className='text_form_login text-decoration-none text-dark d-flex justify-content-center align-items-center'>{createOrLogin}<strong className='color_strong'>{tagColor}</strong></Link>
-
+                    <div className='d-flex justify-content-center align-items-center'>
+                        <Link to={url} className='text_form_login text-decoration-none text-dark text-center'>{createOrLogin}<strong className='color_strong'>{tagColor}</strong></Link>
+                    </div>
                     <hr />
-                    <p className='text_form_login latest_text'>Protegido por reCAPTCHA <strong className='color_strong'>Privacidade</strong> <strong className="color_strong">Termos</strong></p>
+                    <div className="d-flex justify-content-center align-items-center">
+                        <p className='p-0 latest_text'>Protegido por reCAPTCHA <strong className='color_strong'>Privacidade</strong> <strong className="color_strong">Termos</strong></p>
+                    </div>
                 </div>
             </>
         </>

@@ -15,7 +15,7 @@ export const CreateUserProvider = ({children}: {children: JSX.Element}) => {
     
             localStorage.setItem('token', response.data.token);
 
-            window.location.href = '/';
+            window.location.href = `/${true}`;
             
         })
     

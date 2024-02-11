@@ -94,6 +94,24 @@
     align-items: center;
 
 }
+.box_promo_cotas_active {
+
+    height: 12vh;
+
+    color: white;
+
+    background-color: #738E38;
+
+    border-radius: 10px;
+
+    margin-right: 4px;
+    margin-bottom: 9px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 
 .text_promo_cotas {
 

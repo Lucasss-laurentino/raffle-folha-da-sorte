@@ -1,0 +1,23 @@
+.card-detalhes-rifa {
+
+    border: #738E38;
+    
+    border-radius: 10px;
+
+    border: 1px solid  #738E38;
+}
+
+.text-detalhes-bilhete {
+    font-size: 13px;
+    text-align: center;
+}
+
+.card-data-raffle {
+    width: 80%;
+
+    border: 1px solid #738E38;
+    
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+}

@@ -25,7 +25,7 @@ export const Page_login = () => {
 
     const { setCreateOrLogin, setTagColor, setUrl } = useContext(FormEditContext);
 
-    const { login, login_google, erro_login } = useContext(LoginContext);
+    const { login, login_google, erro_login} = useContext(LoginContext);
 
     useEffect(() => {
         setCreateOrLogin('Ainda não tem uma conta ?');
@@ -36,6 +36,7 @@ export const Page_login = () => {
     return (
 
         <>
+   
             <form action="" className='' onSubmit={data => handleSubmit(login)(data)}>
 
                 <div className="div_title_login">
