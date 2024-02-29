@@ -42,6 +42,8 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
         
         const new_data = new FormData();
 
+        console.log(data.price_unitary)
+
         const promotions = [
             {
                 ticket_quantity: data.ticket_quantity_1,
@@ -75,6 +77,7 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
             },
             data: new_data,
         }).then((response) => {
+            
             setRaffles([response.data.raffles]);
             window.location.href = `/${true}/${true}`
         })

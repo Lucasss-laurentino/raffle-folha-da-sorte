@@ -2,9 +2,10 @@ import './index.css';
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { RaffleContext } from '../../Contexts/RaffleContext';
 import InputMask from "react-input-mask";
+import { Loader } from '../Loader';
 
 const schema = yup
     .object({
@@ -31,16 +32,21 @@ export const Form_create_raffle = () => {
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema) });
 
-    const { createRaffle } = useContext(RaffleContext);
+    const { createRaffle, raffles } = useContext(RaffleContext);
 
     const [image, setImage] = useState<File | null>();
 
     const [inputChecked, setInputChecked] = useState(false);
 
+    const [svgRemoving, setSvgRemoving] = useState(false);
+
+    const [errorImage, setErrorImage] = useState('');
+
     const select_image = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         if (event.target.files?.length) {
             setImage(event.target.files[0]);
+            setErrorImage('')
         } else {
             setImage(null);
         }
@@ -50,6 +56,7 @@ export const Form_create_raffle = () => {
     const form_data = (data: any) => {
 
         createRaffle(data, image);
+        setSvgRemoving(true)
 
     }
 
@@ -58,6 +65,12 @@ export const Form_create_raffle = () => {
         setInputChecked(!inputChecked);
         
     }
+
+    useEffect(() => {
+
+        setSvgRemoving(false)
+
+    }, [raffles])
 
     return (
 
@@ -102,7 +115,7 @@ export const Form_create_raffle = () => {
                     {errors.price_unitary && <p className='text-error'>{errors.price_unitary.message}</p>}
                 </div>
 
-                <div className="form-control-file">
+                <div className={errorImage != '' ? "form-control-file-danger" : "form-control-file"}>
                     <span className='span_login mt-3'>Escolha uma imagem</span>
                     <p className="m-1 text-file">Dimensões ideais 1000x1000px</p>
                     <label htmlFor="formFileSm" className='input-file'>Procurar Imagem</label>
@@ -113,6 +126,7 @@ export const Form_create_raffle = () => {
                         accept="image/png, image/jpeg"
                         onChange={select_image}
                     />
+                    {errorImage && <p className='text-error'>{errorImage}</p>}
                 </div>
 
                 <div className="form-control-login">
@@ -231,8 +245,19 @@ export const Form_create_raffle = () => {
                 </div>
                 </>
                 }
-                <button type='submit' className='btn_criar_conta'>Criar Sorteio</button>
+                {!svgRemoving ?
+                
+                <button type={image ? 'submit' : 'button'} onClick={() => {
+                    
+                    !image && setErrorImage('Campo obrigatório') 
 
+                }} className='btn_criar_conta'>Criar</button>
+                
+                : 
+
+                <Loader />
+                
+                }
             </form>
         </>
 

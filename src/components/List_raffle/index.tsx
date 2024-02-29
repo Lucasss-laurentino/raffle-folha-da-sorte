@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './index.css';
 import { Link } from 'react-router-dom';
 import { RaffleContext } from '../../Contexts/RaffleContext';

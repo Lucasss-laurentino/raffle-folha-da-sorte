@@ -11,6 +11,20 @@
     margin-bottom: 23px;
 }
 
+.form-control-file-danger {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border: 1px dashed rgb(255, 3, 3);
+    border-radius: 10px;
+
+    margin-bottom: 23px;
+
+}
 .text-file {
     font-size: 13px;
     color: rgb(165, 162, 162);

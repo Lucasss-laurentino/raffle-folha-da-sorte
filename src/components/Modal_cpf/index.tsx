@@ -1,4 +1,4 @@
-import React, { SetStateAction, useContext, useEffect } from 'react';
+import React, { SetStateAction, useContext, useEffect, useState } from 'react';
 import './index.css';
 import Modal from 'react-bootstrap/Modal';
 import { Button_green } from '../Button_green';
@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import InputMask from "react-input-mask";
 import { RaffleContext } from '../../Contexts/RaffleContext';
 import { PixContext } from '../../Contexts/PixContext';
+import { Loader } from '../Loader';
 
 
 type Props = {
@@ -26,14 +27,16 @@ export const Modal_cpf = ({modal_cpf, setModal_cpf, tot, id}: Props) => {
     const { generate_pix } = useContext(RaffleContext);
     const { qrCode } = useContext(PixContext);
 
+    const [svgRemoving, setSvgRemoving] = useState(false);
+
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema) });
 
     const callQrCode = (data: any) => {
+        setSvgRemoving(true);
         generate_pix(tot, id, data);
     }
 
@@ -41,7 +44,16 @@ export const Modal_cpf = ({modal_cpf, setModal_cpf, tot, id}: Props) => {
 
         setModal_cpf(false);
 
+        setSvgRemoving(false);
+
     }, [qrCode])
+
+    useEffect(() => {
+
+        console.log(tot)
+
+    }, [tot])
+
 
     return (
 
@@ -69,8 +81,16 @@ export const Modal_cpf = ({modal_cpf, setModal_cpf, tot, id}: Props) => {
                             {...register("cpf")}
                         />
                         {errors.cpf && <p className='text-error'>{errors.cpf.message}</p>}
-                        <button className='btn btn-sm btn-success my-2' type='submit'>Gerar qrCode</button>                        
 
+                        {!svgRemoving ?
+
+                            <button className='btn btn-sm btn-success my-2' type='submit'>Gerar qrCode</button>                        
+                        
+                        :
+                        
+                            <Loader/>
+                        
+                        }
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

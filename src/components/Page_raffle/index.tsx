@@ -330,7 +330,7 @@ export const Page_raffle = () => {
             <div className="container d-flex justify-content-center align-items-center mt-3">
 
                 <div className="promo text-center">
-                    <Button_green text={'Quero participar'} btn_function={/*() => generate_pix(tot, id)*/ () => setModal_cpf(true)} />
+                    <Button_green text={'Quero participar'} btn_function={() => setModal_cpf(true)} />
                 </div>
             </div>
 
