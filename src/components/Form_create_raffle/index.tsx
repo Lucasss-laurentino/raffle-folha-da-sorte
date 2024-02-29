@@ -28,7 +28,6 @@ export const Form_create_raffle = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema) });
 
@@ -65,7 +64,7 @@ export const Form_create_raffle = () => {
         <>
             <form className='' onSubmit={(data) => handleSubmit(form_data)(data)}>
 
-                <h1>Dados básicos</h1>
+                <h1>Criar Bilhete</h1>
                 <p className='color-text'>Insira os dados de como deseja seu sorteio abaixo:</p>
 
                 <div className="form-control-login">
@@ -80,7 +79,7 @@ export const Form_create_raffle = () => {
                 </div>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Bilhete</span>
+                    <span className='span_login'>Quantidade de bilhete</span>
                     <input
                         type="number"
                         className={errors.ticket_tot ? 'input_error' : 'input_login'}
@@ -103,10 +102,12 @@ export const Form_create_raffle = () => {
                     {errors.price_unitary && <p className='text-error'>{errors.price_unitary.message}</p>}
                 </div>
 
-                <div className="form-control-login">
-                    <span className='span_login'>Escolha uma imagem</span>
+                <div className="form-control-file">
+                    <span className='span_login mt-3'>Escolha uma imagem</span>
+                    <p className="m-1 text-file">Dimensões ideais 1000x1000px</p>
+                    <label htmlFor="formFileSm" className='input-file'>Procurar Imagem</label>
                     <input
-                        className="input_login form-control-sm"
+                        className="d-none"
                         id="formFileSm"
                         type="file"
                         accept="image/png, image/jpeg"
@@ -128,7 +129,7 @@ export const Form_create_raffle = () => {
                 <h1>Promoção 1</h1>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Quantia de cotas</span>
+                    <span className='span_login'>Quantidade de bilhetes</span>
                     <input
                         type="text"
                         className={errors.ticket_quantity_1 ? 'input_error' : 'input_login'}
@@ -140,7 +141,7 @@ export const Form_create_raffle = () => {
                 </div>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Valor das cotas em conjunto</span>
+                    <span className='span_login'>Valor dos bilhetes em conjunto</span>
                     <InputMask
                         mask={"R$ " + "99,99"}
                         placeholder='R$ 00,00 '
@@ -154,7 +155,7 @@ export const Form_create_raffle = () => {
                 <h1>Promoção 2</h1>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Quantia de cotas</span>
+                    <span className='span_login'>Quantidade de bilhetes</span>
                     <input
                         type="text"
                         className={errors.ticket_quantity_2 ? 'input_error' : 'input_login'}
@@ -166,7 +167,7 @@ export const Form_create_raffle = () => {
                 </div>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Valor das cotas em conjunto</span>
+                    <span className='span_login'>Valor dos bilhetes em conjunto</span>
                     <InputMask
                         mask={"R$ " + "99,99"}
                         placeholder='R$ 00,00 '
@@ -180,7 +181,7 @@ export const Form_create_raffle = () => {
                 <h1>Promoção 3</h1>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Quantia de cotas</span>
+                    <span className='span_login'>Quantidade de bilhetes</span>
                     <input
                         type="text"
                         className={errors.ticket_quantity_3 ? 'input_error' : 'input_login'}
@@ -192,7 +193,7 @@ export const Form_create_raffle = () => {
                 </div>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Valor das cotas em conjunto</span>
+                    <span className='span_login'>Valor dos bilhetes em conjunto</span>
                     <InputMask
                         mask={"R$ " + "99,99"}
                         placeholder='R$ 00,00 '
@@ -206,7 +207,7 @@ export const Form_create_raffle = () => {
                 <h1>Promoção 4</h1>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Quantia de cotas</span>
+                    <span className='span_login'>Quantia de bilhetes</span>
                     <input
                         type="text"
                         className={errors.ticket_quantity_4 ? 'input_error' : 'input_login'}
@@ -218,7 +219,7 @@ export const Form_create_raffle = () => {
                 </div>
 
                 <div className="form-control-login">
-                    <span className='span_login'>Valor das cotas em conjunto</span>
+                    <span className='span_login'>Valor dos bilhetes em conjunto</span>
                     <InputMask
                         mask={"R$ " + "99,99"}
                         placeholder='R$ 00,00 '

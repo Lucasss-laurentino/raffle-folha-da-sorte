@@ -1,7 +1,8 @@
-import { SetStateAction, createContext, useState } from "react";
+import { SetStateAction, createContext, useContext, useState } from "react";
 import RaffleType from "../types/RaffleType";
 import { http } from "../http";
 import PromoType from "../types/PromoType";
+import { PixContext } from "./PixContext";
 
 type Raffle_Type = {
     raffles: RaffleType[] | null,
@@ -12,7 +13,7 @@ type Raffle_Type = {
     getRaffles: () => void,
     getRaffle: (id_raffle: string | undefined) => void,
     createNumbersThisRaffle: (quantityCotas: number, tot: string, id_raffle: string | undefined) => void,
-    generate_pix: (tot: string, id_raffle: string | undefined) => void,
+    generate_pix: (tot: string, id_raffle: string | undefined, data: any) => void,
     myRaffles: RaffleType[] | undefined,
     getMyRaffles: () => void,
     deleteRaffle: (raffle_id: string) => void,
@@ -24,6 +25,8 @@ type Raffle_Type = {
 export const RaffleContext = createContext<Raffle_Type>(null!);
 
 export const RaffleProvider = ({children}: {children: JSX.Element}) => {
+
+    const { setQrCode, setValor, setCopiaECola, setExpiracao } = useContext(PixContext);
 
     const [raffles, setRaffles] = useState<RaffleType[]>([]);
 
@@ -75,7 +78,7 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
             setRaffles([response.data.raffles]);
             window.location.href = `/${true}/${true}`
         })
-        
+
 
     }
 
@@ -105,14 +108,19 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
     
     }
 
-    const generate_pix = (tot: string, id_raffle: string | undefined) => {
+    const generate_pix = (tot: string, id_raffle: string | undefined, data: any) => {
         
-        http.post('/generate_pix', {tot, id_raffle}).then((response) => {
-        
+        http.post('/generate_pix', {tot, id_raffle, data}).then((response) => {
+            
+            setQrCode(response.data.qrCode);
+            setValor(response.data.valor);
+            setCopiaECola(response.data.copiaECola);
+            setExpiracao(response.data.expiracao);
+
+        }).catch(response => {
             console.log(response.data);
-        
         })
-    
+
     }
 
     const createNumbersThisRaffle = (quantityCotas: number, tot: string, id_raffle: string | undefined) => {
@@ -145,9 +153,8 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
     const createPromo = (data: any) => {
         
         http.post('/createPromo', {data, raffId}).then((response) => {
-
+            console.log(response.data);
             setPromotions([...response.data.promotions]);
-
         })
     
     }

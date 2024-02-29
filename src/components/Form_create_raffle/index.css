@@ -1,0 +1,30 @@
+.form-control-file {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border: 1px dashed rgb(192, 188, 188);
+    border-radius: 10px;
+
+    margin-bottom: 23px;
+}
+
+.text-file {
+    font-size: 13px;
+    color: rgb(165, 162, 162);
+}
+.input-file {
+
+    height: auto;
+
+    padding: 10px;
+    margin: 20px;
+
+    color: white;
+    background-color: rgb(58, 56, 56);
+
+    border-radius: 10px;
+
+}

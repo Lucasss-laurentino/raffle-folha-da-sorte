@@ -14,6 +14,7 @@ import { RaffleProvider } from '../Contexts/RaffleContext';
 import { ModalProvider } from '../Contexts/ModalContext';
 import { Minhas_rifas } from '../components/Minhas_rifas';
 import { Data_raffle } from '../components/Data_raffle';
+import { PixProvider } from '../Contexts/PixContext';
 
 export default function appRoutes(){
 
@@ -22,9 +23,9 @@ export default function appRoutes(){
         <FormEditProvider>
         <CreateUserProvider>
         <LoginProvider>
+        <PixProvider>
         <RaffleProvider>
         <ModalProvider>
-
             <Router>
                 <Routes>
 
@@ -43,9 +44,10 @@ export default function appRoutes(){
                 
                 </Routes>
             </Router> 
-            
+
         </ModalProvider>                        
         </RaffleProvider>
+        </PixProvider>            
         </LoginProvider>                
         </CreateUserProvider>
         </FormEditProvider>      

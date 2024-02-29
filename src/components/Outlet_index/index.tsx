@@ -21,8 +21,8 @@ export const Outlet_index = () => {
         <>
             <div className='div-caps-main'>
                 <div className="div-text-main">
-                    <h2>Compre já seu numero e concorra a prêmios incríveis!</h2>
-                    <p className="text-bottom-title">A maior plataforma de rifa do Brasil</p>
+                    <h2>Crie sua Rifa online em poucos minutos</h2>
+                    <p className="text-bottom-title">Potencialize suas rifas ! Crie e gerencie rifas de forma simples</p>
                 </div>
             </div>
             <Button_green btn_function={show_sorteios} text={"Ver sorteios"}/>

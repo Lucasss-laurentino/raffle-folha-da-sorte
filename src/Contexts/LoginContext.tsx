@@ -23,7 +23,7 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
     const login = (data: any) => {
 
         http.post('/login', { data }).then((response) => {
-                        
+            
             localStorage.setItem('token', response.data.token);
 
             window.location.href = `/${true}`
