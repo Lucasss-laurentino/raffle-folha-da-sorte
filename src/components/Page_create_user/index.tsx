@@ -1,10 +1,14 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './index.css'
 import { FormEditContext } from '../../Contexts/FormEditContext'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { CreateUserContext } from '../../Contexts/CreateUserContext'
+import { Loader } from '../Loader'
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'
+import { MenuContext } from '../../Contexts/MenuContext'
 
 const schema = yup
   .object({
@@ -18,9 +22,31 @@ const schema = yup
 
 export const Page_create_user = () => {
 
+    const navigate = useNavigate();
+
     const { setCreateOrLogin, setTagColor, setUrl } = useContext(FormEditContext);
 
-    const { create_user } = useContext(CreateUserContext)
+    const { create_user, gatilho_logado } = useContext(CreateUserContext)
+
+    const { setMenu } = useContext(MenuContext)
+
+    const create_user_loader = (data: any) => {
+
+        setGatilho_loader(true)
+
+        create_user(data)
+
+    }
+
+    useEffect(() => {
+
+        if(gatilho_logado){
+            navigate('/');
+        }
+
+    }, [gatilho_logado])
+
+    const [gatilho_loader, setGatilho_loader] = useState(false);
 
     const {
         register,
@@ -33,12 +59,13 @@ export const Page_create_user = () => {
         setCreateOrLogin('Já tem uma conta ? ');
         setTagColor(' Login');
         setUrl('/login')
-    })
+        setMenu(false)
+    });
 
     return (
 
         <>
-            <form action="" className='' onSubmit={(data) => handleSubmit(create_user)(data)}>
+            <form action="" className='' onSubmit={(data) => handleSubmit(create_user_loader)(data)}>
 
                 <div className="div_title_login">
                     <h2>Criar conta</h2>
@@ -93,8 +120,11 @@ export const Page_create_user = () => {
                         e a nossa <strong className='color_strong'>Politica de privacidade</strong> e confirma ter mais de 18 anos.
                     </p>
                 </div>
-
+                {!gatilho_loader ?
                 <button type='submit' className='btn_criar_conta'>Criar conta</button>
+                :
+                <Loader />
+                }
             </form>
 
         </>

@@ -3,6 +3,7 @@ import RaffleType from "../types/RaffleType";
 import { http } from "../http";
 import PromoType from "../types/PromoType";
 import { PixContext } from "./PixContext";
+import { LoginContext } from "./LoginContext";
 
 type Raffle_Type = {
     raffles: RaffleType[] | null,
@@ -24,7 +25,7 @@ type Raffle_Type = {
 
 export const RaffleContext = createContext<Raffle_Type>(null!);
 
-export const RaffleProvider = ({children}: {children: JSX.Element}) => {
+export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
 
     const { setQrCode, setValor, setCopiaECola, setExpiracao } = useContext(PixContext);
 
@@ -38,50 +39,58 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
 
     const [raffId, setRaffId] = useState('');
 
+    const { validate_token, user_logged } = useContext(LoginContext);
+
     const createRaffle = (data: any, image: any) => {
-        
-        const new_data = new FormData();
 
-        console.log(data.price_unitary)
+        const token = localStorage.getItem('token');
 
-        const promotions = [
-            {
-                ticket_quantity: data.ticket_quantity_1,
-                price_together: data.price_together_1,
-            },
-            {
-                ticket_quantity: data.ticket_quantity_2,
-                price_together: data.price_together_2,
-            },
-            {
-                ticket_quantity: data.ticket_quantity_3,
-                price_together: data.price_together_3,
-            },
-            {
-                ticket_quantity: data.ticket_quantity_4,
-                price_together: data.price_together_4,
-            }
-        ]
+        if (token) {
+            validate_token(token)
+        }
 
-        new_data.append('title', data.title);
-        new_data.append('ticket_tot', data.ticket_tot);
-        new_data.append('price_unitary', data.price_unitary);
-        new_data.append('image', image);
-        new_data.append('promotions', JSON.stringify(promotions));
+        if (user_logged) {
 
-        http.request({
-            url: '/create_raffle',
-            method: 'post',
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            data: new_data,
-        }).then((response) => {
-            
-            setRaffles([response.data.raffles]);
-            window.location.href = `/${true}/${true}`
-        })
+            const new_data = new FormData();
 
+            const promotions = [
+                {
+                    ticket_quantity: data.ticket_quantity_1,
+                    price_together: data.price_together_1,
+                },
+                {
+                    ticket_quantity: data.ticket_quantity_2,
+                    price_together: data.price_together_2,
+                },
+                {
+                    ticket_quantity: data.ticket_quantity_3,
+                    price_together: data.price_together_3,
+                },
+                {
+                    ticket_quantity: data.ticket_quantity_4,
+                    price_together: data.price_together_4,
+                }
+            ]
+
+            new_data.append('title', data.title);
+            new_data.append('ticket_tot', data.ticket_tot);
+            new_data.append('price_unitary', data.price_unitary);
+            new_data.append('image', image);
+            new_data.append('promotions', JSON.stringify(promotions));
+
+            http.request({
+                url: '/create_raffle',
+                method: 'post',
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                data: new_data,
+            }).then((response) => {
+                setRaffles([response.data.raffles]);
+                window.location.href = `/${true}/${true}`
+            })
+
+        }
 
     }
 
@@ -108,13 +117,13 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
         http.get(`/getPromotions/${id_raffle}`).then((response) => {
             setPromotions([...response.data.promotions]);
         })
-    
+
     }
 
     const generate_pix = (tot: string, id_raffle: string | undefined, data: any) => {
-        
-        http.post('/generate_pix', {tot, id_raffle, data}).then((response) => {
-            
+
+        http.post('/generate_pix', { tot, id_raffle, data }).then((response) => {
+
             setQrCode(response.data.qrCode);
             setValor(response.data.valor);
             setCopiaECola(response.data.copiaECola);
@@ -128,7 +137,7 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
 
     const createNumbersThisRaffle = (quantityCotas: number, tot: string, id_raffle: string | undefined) => {
 
-        http.post('/createNumbersThisRaffle', {quantityCotas,tot, id_raffle}).then((response) => {
+        http.post('/createNumbersThisRaffle', { quantityCotas, tot, id_raffle }).then((response) => {
 
             console.log(response.data);
 
@@ -146,31 +155,31 @@ export const RaffleProvider = ({children}: {children: JSX.Element}) => {
     }
 
     const delete_promo = (id_promo: string) => {
-    
-        http.post(`/delete_promo`, {id_promo}).then((response) => {
+
+        http.post(`/delete_promo`, { id_promo }).then((response) => {
             setPromotions([...response.data.allPromo]);
         })
 
     }
 
     const createPromo = (data: any) => {
-        
-        http.post('/createPromo', {data, raffId}).then((response) => {
+
+        http.post('/createPromo', { data, raffId }).then((response) => {
             console.log(response.data);
             setPromotions([...response.data.promotions]);
         })
-    
+
     }
 
     return (
-        <RaffleContext.Provider value={{ 
-            raffles, 
-            createRaffle, 
-            getRaffles, 
-            getRaffle, 
-            raffle, 
-            promotions, 
-            getPromotions, 
+        <RaffleContext.Provider value={{
+            raffles,
+            createRaffle,
+            getRaffles,
+            getRaffle,
+            raffle,
+            promotions,
+            getPromotions,
             createNumbersThisRaffle,
             generate_pix,
             myRaffles,

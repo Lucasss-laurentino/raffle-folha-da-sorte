@@ -30,7 +30,7 @@ export default function appRoutes(){
                 <Routes>
 
                     <Route path="/" element={<Page_default />}>
-                        <Route path='/:logado?/:createRaffle?' element={<Outlet_index />} />
+                        <Route path='/' element={<Outlet_index />} />
                         <Route path='/sorteio/:id' element={<Page_raffle />} />
                         <Route path='/minhas_rifas' element={<Minhas_rifas />} />
                         <Route path='/detalhes/:id' element={<Data_raffle />} />

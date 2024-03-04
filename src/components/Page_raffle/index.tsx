@@ -162,7 +162,7 @@ export const Page_raffle = () => {
     return (
         <>
 
-            <Modal_cpf  tot={tot} id={id} modal_cpf={modal_cpf} setModal_cpf={setModal_cpf} />
+            <Modal_cpf  tot={tot} id={id} modal_cpf={modal_cpf} quantity_cotas={quantityCotas} setModal_cpf={setModal_cpf} />
 
             <div className="capa_page">
                 <img src={raffle?.image} className='img_capa_page' alt="" />
@@ -333,8 +333,7 @@ export const Page_raffle = () => {
                     <Button_green text={'Quero participar'} btn_function={() => setModal_cpf(true)} />
                 </div>
             </div>
-
-            
+           
             {/* qr code  */}
             {qrCode.length > 0 &&
             <div className={openPopUpPix ? 'container-fluid qr-code' : 'pix-hiden'}>

@@ -10,7 +10,7 @@ export const Footer = () => {
                 </div>
                 <div className="footer_body">
                     <div className="text-body-footer">
-                        <p className='text-bottom-title'>Plataforma para você comprar rifa e concorrer a grandes prêmios, com seguranã e praticidade</p>
+                        <p className='text-bottom-title'>Plataforma para você comprar rifa e concorrer a grandes prêmios, com segurança e praticidade</p>
                     </div>
                 </div>
                 <div className="footer_social_media mb-5">

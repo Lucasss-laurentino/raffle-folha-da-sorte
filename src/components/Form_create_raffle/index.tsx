@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { RaffleContext } from '../../Contexts/RaffleContext';
 import InputMask from "react-input-mask";
 import { Loader } from '../Loader';
+import { LoginContext } from '../../Contexts/LoginContext';
 
 const schema = yup
     .object({
@@ -66,15 +67,31 @@ export const Form_create_raffle = () => {
         
     }
 
+    const { validate_token, user_logged } = useContext(LoginContext);
+
     useEffect(() => {
 
         setSvgRemoving(false)
+
+        const token = localStorage.getItem('token');
+        
+        if(token){
+            validate_token(token)
+            
+            if(!user_logged){
+                window.location.href = '/'
+            }
+
+        } else {
+            window.location.href = '/'
+        }
 
     }, [raffles])
 
     return (
 
         <>
+            {user_logged ?
             <form className='' onSubmit={(data) => handleSubmit(form_data)(data)}>
 
                 <h1>Criar Bilhete</h1>
@@ -259,6 +276,10 @@ export const Form_create_raffle = () => {
                 
                 }
             </form>
+            :
+            <Loader />
+            }
+
         </>
 
     )

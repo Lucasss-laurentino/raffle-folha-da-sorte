@@ -15,6 +15,7 @@ type Props = {
     modal_cpf: boolean,
     setModal_cpf: React.Dispatch<SetStateAction<boolean>>,
     tot: string,
+    quantity_cotas: number,
     id: string | undefined,
 }
 
@@ -22,7 +23,7 @@ const schema = yup.object({
     cpf: yup.string().required("Campo obrigatório").min(14).max(14)
 }).required()
 
-export const Modal_cpf = ({modal_cpf, setModal_cpf, tot, id}: Props) => {
+export const Modal_cpf = ({modal_cpf, setModal_cpf, tot, quantity_cotas, id}: Props) => {
 
     const { generate_pix } = useContext(RaffleContext);
     const { qrCode } = useContext(PixContext);
@@ -47,13 +48,6 @@ export const Modal_cpf = ({modal_cpf, setModal_cpf, tot, id}: Props) => {
         setSvgRemoving(false);
 
     }, [qrCode])
-
-    useEffect(() => {
-
-        console.log(tot)
-
-    }, [tot])
-
 
     return (
 

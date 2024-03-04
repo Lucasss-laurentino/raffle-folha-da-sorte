@@ -66,3 +66,32 @@
         opacity: 1;
     }
 }
+
+.div-green {
+
+    height: 50vh;
+
+    color: white;
+    background-color: #738E38;
+
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+
+    margin-bottom: 15%;
+}
+
+.btn-div-green {
+
+    width: 60%;
+    background-color: white;
+
+    border: none;
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 5px;
+}
