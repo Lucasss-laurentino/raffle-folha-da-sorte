@@ -51,7 +51,6 @@ export const Page_create_user = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm({resolver: yupResolver(schema)});
 
@@ -126,7 +125,6 @@ export const Page_create_user = () => {
                 <Loader />
                 }
             </form>
-
         </>
 
     )

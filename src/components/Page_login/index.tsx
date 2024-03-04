@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './index.css';
 import { FormEditContext } from '../../Contexts/FormEditContext';
 import { useForm } from "react-hook-form"
@@ -7,6 +7,9 @@ import * as yup from "yup"
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google' ;
 import { jwtDecode } from 'jwt-decode';
 import { LoginContext } from '../../Contexts/LoginContext';
+import { MenuContext } from '../../Contexts/MenuContext';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Loader } from '../Loader';
 
 const schema = yup
   .object({
@@ -17,6 +20,10 @@ const schema = yup
 
 export const Page_login = () => {
 
+    const { gatilho_login } = useContext(LoginContext);
+
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
@@ -24,20 +31,39 @@ export const Page_login = () => {
     } = useForm({resolver: yupResolver(schema)});
 
     const { setCreateOrLogin, setTagColor, setUrl } = useContext(FormEditContext);
-
+    const { setMenu } = useContext(MenuContext);
     const { login, login_google, erro_login} = useContext(LoginContext);
+
+    const [gatilho_loader_login, setGatilho_loader_login] = useState(false);
+
+    const login_gatilho = (data: any) => {
+
+        setGatilho_loader_login(true);
+
+        login(data);
+
+    }
 
     useEffect(() => {
         setCreateOrLogin('Ainda não tem uma conta ?');
         setTagColor('Registre-se')
         setUrl('/createUser')
+        setMenu(false)
     })
+
+    useEffect(() => {
+
+        if(gatilho_login){
+            navigate('/');
+        }
+    
+    }, [gatilho_login])
 
     return (
 
         <>
    
-            <form action="" className='' onSubmit={data => handleSubmit(login)(data)}>
+            <form action="" className='' onSubmit={data => handleSubmit(login_gatilho)(data)}>
 
                 <div className="div_title_login">
                     <h2>Bem-vindo de volta!</h2>
@@ -76,9 +102,12 @@ export const Page_login = () => {
                     <div className="d-flex justify-content-end align-items-center wid">
                         <p className="m-0 color-text">Esqueceu sua senha ?</p>
                     </div>
-
+                    
+                    {!gatilho_loader_login ?
                     <button className='btn_criar_conta' type='submit'>Entrar</button>
-
+                    :
+                    <Loader />
+                    }
                     <div className='teste-teste'>
                         <GoogleOAuthProvider clientId="311654823213-h1vuqnoiecbgkme0olin2eap6rrdlnn4.apps.googleusercontent.com">
                             
@@ -96,8 +125,6 @@ export const Page_login = () => {
 
                                 }}
                             />
-
-                        
                         </GoogleOAuthProvider>
                     </div>
 

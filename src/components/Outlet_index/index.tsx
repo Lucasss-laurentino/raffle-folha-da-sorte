@@ -8,6 +8,7 @@ import { Price_plan } from '../Price_plan';
 import {Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CreateUserContext } from '../../Contexts/CreateUserContext';
+import { LoginContext } from '../../Contexts/LoginContext';
 
 export const Outlet_index = () => {
 
@@ -18,12 +19,14 @@ export const Outlet_index = () => {
 
     const { gatilho_logado, setGatilho_logado } = useContext(CreateUserContext);
 
+    const { gatilho_login } = useContext(LoginContext);
+
     const [animateHidenOrShowListSorted, setAnimateHidenOrShowListSorted] = useState(''); 
     const [animateOld, setAnimateOld] = useState('d-none'); 
 
     useEffect(() => {
 
-        if(gatilho_logado){        
+        if(gatilho_logado || gatilho_login){        
             toast.success('Você está logado !', {
                 position: "bottom-right",
                 autoClose: 1300,
@@ -39,7 +42,7 @@ export const Outlet_index = () => {
             setGatilho_logado(false);
         }
 
-    }, [localStorage.getItem('token')])
+    }, [])
 
     return (
 
