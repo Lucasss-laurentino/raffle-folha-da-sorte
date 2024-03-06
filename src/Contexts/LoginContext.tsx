@@ -12,6 +12,9 @@ type LoginType = {
     user_logged: User | undefined,
     gatilho_login: boolean,
     setGatilho_login: React.Dispatch<SetStateAction<boolean>>,
+    gatilho_logout: boolean,
+    setGatilho_logout: React.Dispatch<SetStateAction<boolean>>,
+
 }
 
 export const LoginContext = createContext<LoginType>(null!);
@@ -23,6 +26,8 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
     const [user_logged, setUser_logged] = useState<User>();
 
     const [gatilho_login, setGatilho_login] = useState(false);
+
+    const [gatilho_logout, setGatilho_logout] = useState(true);
 
     const login = (data: any) => {
 
@@ -66,10 +71,11 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
         localStorage.setItem('token', '');
         setMenu(false);
         setGatilho_login(false)
+        setGatilho_logout(false)
     }
 
     return (
-        <LoginContext.Provider value={{ logout, login_google, login, erro_login, validate_token, user_logged, gatilho_login, setGatilho_login }}>
+        <LoginContext.Provider value={{ logout, login_google, login, erro_login, validate_token, user_logged, gatilho_login, setGatilho_login, gatilho_logout, setGatilho_logout }}>
             {children}
         </LoginContext.Provider>
     )

@@ -21,6 +21,8 @@ type Raffle_Type = {
     delete_promo: (id_promo: string) => void,
     createPromo: (data: any) => void,
     setRaffId: React.Dispatch<SetStateAction<string>>,
+    gatilho_raffle: boolean,
+    setGatilho_raffle: React.Dispatch<SetStateAction<boolean>>,
 }
 
 export const RaffleContext = createContext<Raffle_Type>(null!);
@@ -40,6 +42,8 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
     const [raffId, setRaffId] = useState('');
 
     const { validate_token, user_logged } = useContext(LoginContext);
+
+    const [gatilho_raffle, setGatilho_raffle] = useState(false);
 
     const createRaffle = (data: any, image: any) => {
 
@@ -86,8 +90,12 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
                 },
                 data: new_data,
             }).then((response) => {
+                /*
                 setRaffles([response.data.raffles]);
-                window.location.href = `/${true}/${true}`
+                setGatilho_raffle(true);
+                */
+
+                console.log(response.data)
             })
 
         }
@@ -188,6 +196,8 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
             delete_promo,
             createPromo,
             setRaffId,
+            gatilho_raffle,
+            setGatilho_raffle,
         }}>
             {children}
         </RaffleContext.Provider>

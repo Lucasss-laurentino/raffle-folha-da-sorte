@@ -9,6 +9,8 @@ import {Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CreateUserContext } from '../../Contexts/CreateUserContext';
 import { LoginContext } from '../../Contexts/LoginContext';
+import { RaffleContext } from '../../Contexts/RaffleContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Outlet_index = () => {
 
@@ -21,12 +23,17 @@ export const Outlet_index = () => {
 
     const { gatilho_login } = useContext(LoginContext);
 
+    const { gatilho_raffle } = useContext(RaffleContext);
+
     const [animateHidenOrShowListSorted, setAnimateHidenOrShowListSorted] = useState(''); 
     const [animateOld, setAnimateOld] = useState('d-none'); 
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
         if(gatilho_logado || gatilho_login){        
+            
             toast.success('Você está logado !', {
                 position: "bottom-right",
                 autoClose: 1300,
@@ -40,6 +47,24 @@ export const Outlet_index = () => {
             });    
         
             setGatilho_logado(false);
+        }
+
+        if(gatilho_raffle){
+
+            toast.success('Rifa criada !', {
+                position: "bottom-right",
+                autoClose: 1300,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });    
+
+            setGatilho_logado(false);
+
         }
 
     }, [])

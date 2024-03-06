@@ -15,22 +15,32 @@ export const Menu_lateral = () => {
 
     const { setModalShow } = useContext(ModalContext);
 
+    const { gatilho_logout, setGatilho_logout } = useContext(LoginContext);
 
     const notify_logout = () => {
 
-        toast.error('Você foi desconectado !', {
-            position: "bottom-right",
-            autoClose: 1400,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Bounce,
-            });
+        setGatilho_logout(true)
 
-        logout(setMenu)
+        if(gatilho_logout){
+
+            toast.error('Você foi desconectado !', {
+                position: "bottom-right",
+                autoClose: 1400,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+    
+            
+            
+            logout(setMenu)
+
+            
+        }
     }
 
     return (

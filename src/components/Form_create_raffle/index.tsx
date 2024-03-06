@@ -7,11 +7,11 @@ import { RaffleContext } from '../../Contexts/RaffleContext';
 import InputMask from "react-input-mask";
 import { Loader } from '../Loader';
 import { LoginContext } from '../../Contexts/LoginContext';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup
     .object({
         title: yup.string().required('Campo obrigatório'),
-        ticket_tot: yup.number().typeError('Campo numérico').integer().positive().required('Campo obrigatório'),
         price_unitary: yup.string().required('Campo obrigatório'),
         ticket_quantity_1: yup.string(),
         price_together_1: yup.string(),
@@ -26,6 +26,8 @@ const schema = yup
     .required()
 
 export const Form_create_raffle = () => {
+
+    const { gatilho_raffle, setGatilho_raffle } = useContext(RaffleContext);
 
     const {
         register,
@@ -53,6 +55,18 @@ export const Form_create_raffle = () => {
         }
 
     }
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if(gatilho_raffle){
+
+            navigate('/');
+
+        }
+
+    }, [gatilho_raffle])
 
     const form_data = (data: any) => {
 
@@ -94,7 +108,7 @@ export const Form_create_raffle = () => {
             {user_logged ?
             <form className='' onSubmit={(data) => handleSubmit(form_data)(data)}>
 
-                <h1>Criar Bilhete</h1>
+                <h1>Criar Sorteio</h1>
                 <p className='color-text'>Insira os dados de como deseja seu sorteio abaixo:</p>
 
                 <div className="form-control-login">
@@ -108,6 +122,7 @@ export const Form_create_raffle = () => {
 
                 </div>
 
+                {/*
                 <div className="form-control-login">
                     <span className='span_login'>Quantidade de bilhete</span>
                     <input
@@ -119,6 +134,7 @@ export const Form_create_raffle = () => {
                     {errors.ticket_tot && <p className='text-error'>{errors.ticket_tot.message}</p>}
 
                 </div>
+                */}
 
                 <div className="form-control-login">
                     <span className='span_login'>Valor unitário</span>

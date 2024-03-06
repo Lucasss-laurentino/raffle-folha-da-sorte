@@ -21,3 +21,30 @@
 
     border-radius: 10px;
 }
+
+.div-link {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.text-link {
+
+    width: 70%;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon-copy {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+:root {
+    --toastify-color-success: #738E38;
+}

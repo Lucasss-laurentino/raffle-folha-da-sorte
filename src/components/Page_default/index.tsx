@@ -1,6 +1,6 @@
 import { Footer } from "../Footer"
 import { Nav_bar } from "../Nav_bar"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { Menu_lateral } from "../Menu_lateral/"
 import { useContext, useEffect } from "react"
 import { LoginContext } from "../../Contexts/LoginContext"
@@ -16,6 +16,8 @@ export const Page_default = () => {
     const { getRaffles } = useContext(RaffleContext);
 
     const { modalShow, setModalShow } = useContext(ModalContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -35,6 +37,16 @@ export const Page_default = () => {
         getRaffles();
 
     }, [])
+
+    useEffect(() => {
+
+        if(localStorage.getItem('token') === '') {
+
+            navigate('/')
+
+        }
+
+    }, [localStorage.getItem('token')])
 
     return (
         

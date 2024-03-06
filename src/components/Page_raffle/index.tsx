@@ -7,11 +7,14 @@ import React from 'react';
 import QRCode from "react-qr-code";
 import { PixContext } from '../../Contexts/PixContext';
 import { Modal_cpf } from '../Modal_cpf';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const Page_raffle = () => {
 
     const { id } = useParams();
-    const { getRaffle, promotions, raffle, generate_pix, getPromotions } = useContext(RaffleContext);
+    const { getRaffle, promotions, raffle, getPromotions } = useContext(RaffleContext);
     const { qrCode, valor, copiaECola } = useContext(PixContext);
     const [quantityCotas, setQuantityCotas] = useState(0);
     const [promo_active, setPromo_active] = useState(false);
@@ -55,6 +58,22 @@ export const Page_raffle = () => {
         }
 
     }, [qrCode]);
+
+    const copy = () => {
+
+        toast.success('Texto copiado', {
+            position: "top-right",
+            autoClose: 999,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        })
+
+    }
 
     const calc_cotas_promo = (quantity_cotas_selected: string | undefined, price_to_gether: string | undefined, promotion_id: string) => {
 
@@ -150,17 +169,15 @@ export const Page_raffle = () => {
 
     const oneMore = () => {
 
-        if (raffle?.ticket_tot) {
-
-            quantityCotas < raffle.ticket_tot && setQuantityCotas(quantityCotas + 1);
-            quantityCotas >= 0 && setTot((Number(tot) + Number(price_number)).toFixed(2));
-
-        }
+        setQuantityCotas(quantityCotas + 1);
+        setTot((Number(tot) + Number(price_number)).toFixed(2));
 
     }
 
     return (
         <>
+
+            <ToastContainer limit={1}/>
 
             <Modal_cpf  tot={tot} id={id} modal_cpf={modal_cpf} quantity_cotas={quantityCotas} setModal_cpf={setModal_cpf} />
 
@@ -354,13 +371,13 @@ export const Page_raffle = () => {
                 </div>
 
                 <div className="container d-flex justify-content-center align-items-center">
-                    <p className='p-copia-e-cola d-flex justify-content-center align-items-center'>
+                    <p className='p-copia-e-cola'>
                         {copiaECola}
                     </p>
                 </div>
 
                 <div className="container d-flex justify-content-center align-items-center">
-                    <button className='btn-copiar'>Copiar</button>
+                    <button className='btn-copiar' onClick={() => copy()}>Copiar</button>
                 </div>
             </div> 
             }

@@ -214,11 +214,12 @@
 .p-copia-e-cola {
 
     color: white;
-    width: 100%;
+    width: 80%;
 
-    word-break: break-word;
+    font-size: 12px;
 
-    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-copiar {
