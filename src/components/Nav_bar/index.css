@@ -7,6 +7,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    box-shadow: 1px 2px 9px rgb(219, 219, 219);
 }
 
 .nav_bar > .div_logo > .logo_img {

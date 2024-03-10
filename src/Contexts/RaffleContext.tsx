@@ -90,12 +90,10 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
                 },
                 data: new_data,
             }).then((response) => {
-                /*
+                
                 setRaffles([response.data.raffles]);
                 setGatilho_raffle(true);
-                */
-
-                console.log(response.data)
+                
             })
 
         }

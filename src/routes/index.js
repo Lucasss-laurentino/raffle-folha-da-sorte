@@ -15,6 +15,12 @@ import { ModalProvider } from '../Contexts/ModalContext';
 import { Minhas_rifas } from '../components/Minhas_rifas';
 import { Data_raffle } from '../components/Data_raffle';
 import { PixProvider } from '../Contexts/PixContext';
+import { Minha_conta } from '../components/Minha_conta';
+import { Outlet_minha_conta } from '../components/Outlet_minha_conta';
+import { Update_email } from '../components/Update_email';
+import { Update_password } from '../components/Update_password';
+import { Update_nome } from '../components/Update_nome';
+import { Update_celular } from '../components/Update_celular';
 
 export default function appRoutes(){
 
@@ -34,6 +40,13 @@ export default function appRoutes(){
                         <Route path='/sorteio/:id' element={<Page_raffle />} />
                         <Route path='/minhas_rifas' element={<Minhas_rifas />} />
                         <Route path='/detalhes/:id' element={<Data_raffle />} />
+                        <Route path='/minha_conta' element={<Minha_conta />} >
+                            <Route path='/minha_conta' element={<Outlet_minha_conta />}/>
+                            <Route path='/minha_conta/alterar_email' element={<Update_email />} />
+                            <Route path='/minha_conta/alterar_senha' element={<Update_password/>} />
+                            <Route path='/minha_conta/alterar_nome' element={<Update_nome/>} />
+                            <Route path='/minha_conta/alterar_celular' element={<Update_celular/>} />
+                        </Route> 
                     </Route>
                     
                     <Route path='/' element={<Form />}>

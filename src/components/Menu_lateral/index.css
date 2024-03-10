@@ -1,5 +1,7 @@
 .div_menu_lateral {
     
+    z-index: 3;
+
     display: block;
 
     width: 90%;

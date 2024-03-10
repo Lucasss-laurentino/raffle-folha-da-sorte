@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CreateUserContext } from '../../Contexts/CreateUserContext';
 import { LoginContext } from '../../Contexts/LoginContext';
 import { RaffleContext } from '../../Contexts/RaffleContext';
-import { useNavigate } from 'react-router-dom';
 
 export const Outlet_index = () => {
 
@@ -27,8 +26,6 @@ export const Outlet_index = () => {
 
     const [animateHidenOrShowListSorted, setAnimateHidenOrShowListSorted] = useState(''); 
     const [animateOld, setAnimateOld] = useState('d-none'); 
-
-    const navigate = useNavigate();
 
     useEffect(() => {
 

@@ -20,6 +20,7 @@ export const CreateUserProvider = ({children}: {children: JSX.Element}) => {
             localStorage.setItem('token', response.data.token);
 
             setGatilho_logado(true)
+            
         })
     
     }

@@ -8,10 +8,12 @@ import InputMask from "react-input-mask";
 import { Loader } from '../Loader';
 import { LoginContext } from '../../Contexts/LoginContext';
 import { useNavigate } from 'react-router-dom';
+import { ModalTaxas } from '../ModalTaxas';
 
 const schema = yup
     .object({
         title: yup.string().required('Campo obrigatório'),
+        ticket_tot: yup.number().required('Campo obrigatório').positive('precisa ser um numero').integer('Precisa ser um número'),
         price_unitary: yup.string().required('Campo obrigatório'),
         ticket_quantity_1: yup.string(),
         price_together_1: yup.string(),
@@ -31,6 +33,7 @@ export const Form_create_raffle = () => {
 
     const {
         register,
+        watch,
         handleSubmit,
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema) });
@@ -45,6 +48,12 @@ export const Form_create_raffle = () => {
 
     const [errorImage, setErrorImage] = useState('');
 
+    const [show, setShow] = useState(false);
+
+    const [price_string, setPrice_string] = useState('0.00');
+
+    const [taxa, setTaxa] = useState(0);
+
     const select_image = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         if (event.target.files?.length) {
@@ -57,16 +66,6 @@ export const Form_create_raffle = () => {
     }
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-
-        if(gatilho_raffle){
-
-            navigate('/');
-
-        }
-
-    }, [gatilho_raffle])
 
     const form_data = (data: any) => {
 
@@ -85,26 +84,62 @@ export const Form_create_raffle = () => {
 
     useEffect(() => {
 
+        if(gatilho_raffle){
+
+            navigate('/');
+
+        }
+
+    }, [gatilho_raffle])
+
+    useEffect(() => {
+
         setSvgRemoving(false)
 
         const token = localStorage.getItem('token');
         
         if(token){
-            validate_token(token)
             
-            if(!user_logged){
-                window.location.href = '/'
+            if(token === '' || token === null || token === undefined){
+                navigate('/')
+            } else {
+                validate_token(token)
             }
 
-        } else {
-            window.location.href = '/'
         }
 
     }, [raffles])
 
+    useEffect(() => {
+
+        let string = watch('price_unitary');
+
+        if(string != null && string != undefined && string != ''){
+
+            let string_price = string.split(' ');
+            let price_number = string_price[1].replace(',', '.')
+            let tot_string = watch('ticket_tot');
+
+            if(tot_string != null && Number(price_number)) {
+
+                let calc = Number(price_number) * Number(tot_string);
+
+                setPrice_string((Number(price_number) * Number(tot_string)).toFixed(2))
+                setTaxa((10 * calc) / 100)
+            }
+
+            
+
+        }
+
+    }, [watch('price_unitary'), watch('ticket_tot')])
+
     return (
 
         <>
+        
+            <ModalTaxas show={show} onHide={() => setShow(false)} />
+
             {user_logged ?
             <form className='' onSubmit={(data) => handleSubmit(form_data)(data)}>
 
@@ -122,7 +157,7 @@ export const Form_create_raffle = () => {
 
                 </div>
 
-                {/*
+                
                 <div className="form-control-login">
                     <span className='span_login'>Quantidade de bilhete</span>
                     <input
@@ -134,7 +169,6 @@ export const Form_create_raffle = () => {
                     {errors.ticket_tot && <p className='text-error'>{errors.ticket_tot.message}</p>}
 
                 </div>
-                */}
 
                 <div className="form-control-login">
                     <span className='span_login'>Valor unitário</span>
@@ -150,7 +184,7 @@ export const Form_create_raffle = () => {
 
                 <div className={errorImage != '' ? "form-control-file-danger" : "form-control-file"}>
                     <span className='span_login mt-3'>Escolha uma imagem</span>
-                    <p className="m-1 text-file">Dimensões ideais 1000x1000px</p>
+                    <p className="m-1 text-file">Dimensões ideais 1000x1000</p>
                     <label htmlFor="formFileSm" className='input-file'>Procurar Imagem</label>
                     <input
                         className="d-none"
@@ -278,6 +312,29 @@ export const Form_create_raffle = () => {
                 </div>
                 </>
                 }
+                <div className="row w-100 d-flex py-2 justify-content-between align-items-center">
+                    <div className='col-7 p-0'>
+                        <h6 className='title-taxa m-0'>Taxas de publicação</h6>
+                    </div>
+                    <div className="col-4 p-0">
+                        <button className='btn-taxas' type='button' onClick={() => setShow(true)}>Ver taxas</button>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div className="row w-100 d-flex py-3 justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
+                        <p className="m-0 w-text">Taxa de publicação</p>
+                        <p className="m-0 text-danger w-text">-R$ {taxa}</p>
+                    </div>
+                    <div className="d-flex py-3 justify-content-between align-items-center">
+                        <p className="m-0 w-text">Arrecadação estimada</p>
+                        <p className="m-0 text-success w-text">+R$ {price_string}</p>
+                    </div>
+                </div>
+
+
                 {!svgRemoving ?
                 
                 <button type={image ? 'submit' : 'button'} onClick={() => {

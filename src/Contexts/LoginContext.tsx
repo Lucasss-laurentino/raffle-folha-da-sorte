@@ -49,7 +49,7 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
 
             localStorage.setItem('token', response.data.token);
 
-            window.location.href = `/${true}`;
+            setGatilho_login(true);
 
         })
 
@@ -60,6 +60,7 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
         http.post('/validate_token', { token }).then((response) => {
 
             setUser_logged(response.data.user);
+            console.log(response.data.user)
 
         }).catch((response) => {
             console.log(response)

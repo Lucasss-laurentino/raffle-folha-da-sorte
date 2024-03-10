@@ -9,6 +9,8 @@ import { Loader } from '../Loader'
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom'
 import { MenuContext } from '../../Contexts/MenuContext'
+import InputMask from "react-input-mask";
+
 
 const schema = yup
   .object({
@@ -16,7 +18,7 @@ const schema = yup
     email: yup.string().email('Email inválido').required('Campo obrigatório'),
     password: yup.string().min(6, 'Senha muito curta').required('Campo obrigatório'),
     repeat_password: yup.string().min(6, 'Senha muito curta').oneOf([yup.ref('password')], 'As senhas precisam ser iguais').required('Campo obrigatório'),
-
+    celular: yup.string().required('Campo obrigatório'),
   })
   .required()
 
@@ -35,7 +37,7 @@ export const Page_create_user = () => {
         setGatilho_loader(true)
 
         create_user(data)
-
+        
     }
 
     useEffect(() => {
@@ -91,6 +93,20 @@ export const Page_create_user = () => {
                     {errors.email && <p className='text-error'>{errors.email.message}</p>}
 
                 </div>
+                <div className="form-control-login">
+                    <span className='span_login'>Número de celular</span>
+                    <InputMask
+                        mask={"(99) 999999999"}
+                        type="text"
+                        className={errors.celular ? 'input_error' : 'input_login'}
+                        placeholder={errors.celular ? '' : 'Digite seu email'}
+                        {...register("celular")}
+                    />
+
+                    {errors.celular && <p className='text-error'>{errors.celular.message}</p>}
+
+                </div>
+
                 <div className="form-control-login">
                     <span className='span_login'>Senha</span>
                     <input
