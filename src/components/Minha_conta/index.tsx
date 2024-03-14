@@ -1,11 +1,106 @@
+import { useContext, useEffect } from 'react';
 import './index.css';
 import { Outlet } from 'react-router-dom';
+import { UserContext } from '../../Contexts/UserContext';
+import {Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Minha_conta = () => {
+
+    const { 
+    
+        gatilho_update_email, 
+        setGatilho_update_email, 
+        setGatilho_update_password, 
+        gatilho_update_password, 
+        gatilho_update_name, 
+        setGatilho_update_name,
+        gatilho_update_tel,
+        setGatilho_update_tel,
+    
+    } = useContext(UserContext);
+
+    useEffect(() => {
+
+        if(gatilho_update_email){
+
+            toast.success('Você atualizou seu email !', {
+                position: "bottom-right",
+                autoClose: 1300,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });    
+        
+            setGatilho_update_email(false);
+
+        }
+
+        if(gatilho_update_password){
+
+            toast.success('Você atualizou sua senha !', {
+                position: "bottom-right",
+                autoClose: 1300,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });    
+        
+            setGatilho_update_password(false);
+
+        }
+
+        if(gatilho_update_name){
+
+            toast.success('Você atualizou seu nome !', {
+                position: "bottom-right",
+                autoClose: 1300,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });    
+        
+            setGatilho_update_name(false);
+
+        }
+
+        if(gatilho_update_tel) {
+
+            toast.success('Você atualizou o número de contato!', {
+                position: "bottom-right",
+                autoClose: 1300,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });    
+        
+            setGatilho_update_tel(false);
+
+        }
+
+    })
 
     return (
 
         <>
+
+            <ToastContainer limit={1}/>
 
             <div className="container mt-5">
 
@@ -20,7 +115,7 @@ export const Minha_conta = () => {
 
                 <div className="container mt-4 div-edit-user">
 
-                    <Outlet />
+                    <Outlet /> {/* componentes dentro de outlet, outlet_minha_conta e updates.. */}
                     
                 </div>
 

@@ -4,6 +4,7 @@ import { http } from "../http";
 import PromoType from "../types/PromoType";
 import { PixContext } from "./PixContext";
 import { LoginContext } from "./LoginContext";
+import { UserContext } from "./UserContext";
 
 type Raffle_Type = {
     raffles: RaffleType[] | null,
@@ -40,9 +41,9 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
     const [promotions, setPromotions] = useState<PromoType[]>([]);
 
     const [raffId, setRaffId] = useState('');
-
-    const { validate_token, user_logged } = useContext(LoginContext);
-
+    
+    const { user } = useContext(UserContext)
+    
     const [gatilho_raffle, setGatilho_raffle] = useState(false);
 
     const createRaffle = (data: any, image: any) => {
@@ -50,10 +51,10 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
         const token = localStorage.getItem('token');
 
         if (token) {
-            validate_token(token)
+            //validate_token(token)
         }
 
-        if (user_logged) {
+        if (user != null && user.admin) {
 
             const new_data = new FormData();
 
@@ -81,6 +82,7 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
             new_data.append('price_unitary', data.price_unitary);
             new_data.append('image', image);
             new_data.append('promotions', JSON.stringify(promotions));
+            new_data.append('user_id', user.id);
 
             http.request({
                 url: '/create_raffle',

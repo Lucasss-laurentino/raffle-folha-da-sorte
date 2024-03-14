@@ -6,9 +6,9 @@ import { useContext, useEffect, useState } from 'react';
 import { RaffleContext } from '../../Contexts/RaffleContext';
 import InputMask from "react-input-mask";
 import { Loader } from '../Loader';
-import { LoginContext } from '../../Contexts/LoginContext';
 import { useNavigate } from 'react-router-dom';
 import { ModalTaxas } from '../ModalTaxas';
+import { UserContext } from '../../Contexts/UserContext';
 
 const schema = yup
     .object({
@@ -38,6 +38,10 @@ export const Form_create_raffle = () => {
         formState: { errors },
     } = useForm({ resolver: yupResolver(schema) });
 
+    const navigate = useNavigate();
+
+    const { user, getUser } = useContext(UserContext);
+
     const { createRaffle, raffles } = useContext(RaffleContext);
 
     const [image, setImage] = useState<File | null>();
@@ -65,8 +69,6 @@ export const Form_create_raffle = () => {
 
     }
 
-    const navigate = useNavigate();
-
     const form_data = (data: any) => {
 
         createRaffle(data, image);
@@ -80,13 +82,11 @@ export const Form_create_raffle = () => {
         
     }
 
-    const { validate_token, user_logged } = useContext(LoginContext);
-
     useEffect(() => {
 
         if(gatilho_raffle){
 
-            navigate('/');
+            navigate('/minhas_rifas');
 
         }
 
@@ -96,17 +96,7 @@ export const Form_create_raffle = () => {
 
         setSvgRemoving(false)
 
-        const token = localStorage.getItem('token');
-        
-        if(token){
-            
-            if(token === '' || token === null || token === undefined){
-                navigate('/')
-            } else {
-                validate_token(token)
-            }
-
-        }
+        //getUser();
 
     }, [raffles])
 
@@ -140,7 +130,7 @@ export const Form_create_raffle = () => {
         
             <ModalTaxas show={show} onHide={() => setShow(false)} />
 
-            {user_logged ?
+            {user ?
             <form className='' onSubmit={(data) => handleSubmit(form_data)(data)}>
 
                 <h1>Criar Sorteio</h1>
@@ -317,7 +307,7 @@ export const Form_create_raffle = () => {
                         <h6 className='title-taxa m-0'>Taxas de publicação</h6>
                     </div>
                     <div className="col-4 p-0">
-                        <button className='btn-taxas' type='button' onClick={() => setShow(true)}>Ver taxas</button>
+                        <p className="m-0 text-link text-center">10%</p>
                     </div>
                 </div>
 

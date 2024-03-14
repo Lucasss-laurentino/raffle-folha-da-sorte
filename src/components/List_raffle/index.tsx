@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import './index.css';
 import { Link } from 'react-router-dom';
 import { RaffleContext } from '../../Contexts/RaffleContext';
 import React from 'react';
-import { LoginContext } from '../../Contexts/LoginContext';
+import { UserContext } from '../../Contexts/UserContext';
 
 export const List_raffle = () => {
 
     const { raffles, deleteRaffle } = useContext(RaffleContext);
 
-    const { user_logged } = useContext(LoginContext);
+    const { user } = useContext(UserContext);
 
     return (
         
@@ -22,7 +22,7 @@ export const List_raffle = () => {
                             <React.Fragment key={raffle._id}>
                                 <li className="item-list-raffle my-2">
                                     <div className="card-raffle">
-                                        {user_logged?.admin &&
+                                        {user?.admin &&
                                             <div className="d-flex justify-content-end align-items-center">
                                                 <button type='button' className="btn btn-sm m-0 px-3 pt-2 text-danger" onClick={() => deleteRaffle(raffle._id)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">

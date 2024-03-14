@@ -1,10 +1,48 @@
 import { useNavigate } from 'react-router-dom'
-import { Button_green } from '../Button_green'
 import './index.css'
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../Contexts/UserContext';
+import { Loader } from '../Loader';
+
+const schema = yup.object({
+    email_atual: yup.string().email('Email inválido').required('Campo obrigatório'),
+    email_novo: yup.string().email('Email inválido').required('Campo obrigatório'),
+    repetir_email_novo: yup.string().email('Email inválido').oneOf([yup.ref('email_novo')], 'O email precisa ser igual').required('Campo obrigatório'),
+}).required();
 
 export const Update_email = () => {
 
     const navigate = useNavigate();
+
+    const { update_email, gatilho_update_email } = useContext(UserContext);
+
+    const [gatilho_loader, setGatilho_loader] = useState(false);
+
+    useEffect(() => {
+
+        if(gatilho_update_email){
+            setGatilho_loader(false)
+            navigate('/minha_conta')
+        }
+
+    }, [gatilho_update_email])
+
+    const loader_navigate = (data: any) => {
+
+        setGatilho_loader(true)
+
+        update_email(data);
+
+    }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({resolver: yupResolver(schema)});
 
     return (
 
@@ -14,22 +52,34 @@ export const Update_email = () => {
                     <div className="container">
                         <button className="btn-voltar d-flex justify-content-end px-2 py-1 mt-4" onClick={() => navigate('/minha_conta')}>Voltar</button>
                     </div>
-                    <form action="">
+                    <form action="" onSubmit={(data) => handleSubmit(loader_navigate)(data)}>
                         <div className="container mt-4">
                             <h6 className='m-0 text-start px-2'>Informe o email atual</h6>
-                            <input type="text" className="input_login w-100 mb-1" />
+                            <input type="text"  className="input_login w-100 mb-1" {...register('email_atual')} />
+                            {errors.email_atual && <p className='text-error'>{errors.email_atual.message}</p>}
+
                         </div>
                         <div className="container mt-4">
                             <h6 className='m-0 text-start px-2'>Informe o email novo</h6>
-                            <input type="text" className="input_login w-100 mb-1" />
+                            <input type="text" className="input_login w-100 mb-1" {...register('email_novo')} />
+                            {errors.email_novo && <p className='text-error'>{errors.email_novo.message}</p>}
+
                         </div>
                         <div className="container mt-4">
                             <h6 className='m-0 text-start px-2'>Repita o email novo</h6>
-                            <input type="text" className="input_login w-100 mb-1    " />
+                            <input type="text" className="input_login w-100 mb-1" {...register('repetir_email_novo')} />
+                            {errors.repetir_email_novo && <p className='text-error'>{errors.repetir_email_novo.message}</p>}
+
                         </div>
 
                         <div className="mb-4">
-                            <Button_green text='Atualizar' btn_function={() => console.log('teste')}  />
+                            <div className="div-button-green">
+                                {!gatilho_loader ?
+                                <button className='btn-green' type='submit'>Atualizar</button>                            
+                                :
+                                <Loader />
+                                }
+                            </div>
                         </div>
 
                     </form>

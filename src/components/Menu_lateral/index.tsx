@@ -6,12 +6,15 @@ import { LoginContext } from '../../Contexts/LoginContext';
 import { ModalContext } from '../../Contexts/ModalContext';
 import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from '../../Contexts/UserContext';
 
 export const Menu_lateral = () => {
 
     const { menu, setMenu } = useContext(MenuContext);
 
-    const { user_logged, logout } = useContext(LoginContext);
+    const { logout } = useContext(LoginContext);
+
+    const { user } = useContext(UserContext);
 
     const { setModalShow } = useContext(ModalContext);
 
@@ -62,7 +65,7 @@ export const Menu_lateral = () => {
                             </li>
                         </>
                     }
-                    {user_logged?.admin &&
+                    {user?.admin && localStorage.getItem('token') && 
                         <li className='item_list_menu_lateral'>
                             <div className="icon_item p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-ticket-perforated" viewBox="0 0 16 16">

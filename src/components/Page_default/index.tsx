@@ -3,19 +3,19 @@ import { Nav_bar } from "../Nav_bar"
 import { Outlet, useNavigate } from "react-router-dom"
 import { Menu_lateral } from "../Menu_lateral/"
 import { useContext, useEffect } from "react"
-import { LoginContext } from "../../Contexts/LoginContext"
-import { RaffleContext } from "../../Contexts/RaffleContext"
 import { Modal_tickets } from "../Modal_tickets"
 import { ModalContext } from "../../Contexts/ModalContext"
 import './index.css';
+import { UserContext } from "../../Contexts/UserContext"
+import { RaffleContext } from "../../Contexts/RaffleContext"
 
 export const Page_default = () => {
 
-    const { validate_token } = useContext(LoginContext);
-
-    const { getRaffles } = useContext(RaffleContext);
+    const { getUser } = useContext(UserContext);
 
     const { modalShow, setModalShow } = useContext(ModalContext);
+
+    const { getRaffles } = useContext(RaffleContext);
 
     const navigate = useNavigate();
 
@@ -26,15 +26,9 @@ export const Page_default = () => {
             behavior: 'smooth'
         });
 
-        const token = localStorage.getItem('token');
-
-        if(token?.length){
-
-            validate_token(token);
-
-        }
-
+        getUser();
         getRaffles();
+    
 
     }, [])
 
@@ -44,7 +38,7 @@ export const Page_default = () => {
 
             navigate('/')
 
-        }
+        } 
 
     }, [localStorage.getItem('token')])
 

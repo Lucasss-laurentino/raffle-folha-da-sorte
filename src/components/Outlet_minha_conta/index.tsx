@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { LoginContext } from '../../Contexts/LoginContext';
 import './index.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../Contexts/UserContext';
 
 export const Outlet_minha_conta = () => {
 
-    const { user_logged } = useContext(LoginContext);
+    const { user } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export const Outlet_minha_conta = () => {
                         </div>
                         <input type="text" className='input_minha_conta' />
 
-                        <p className="m-0 text-link text-position-flut position-absolute">{user_logged?.email}</p>
+                        <p className="m-0 text-link text-position-flut position-absolute">{user?.email}</p>
 
                     </div>
                     <div className="col-3 p-0">
@@ -73,7 +73,7 @@ export const Outlet_minha_conta = () => {
                         </div>
                         <input type="text" className='input_minha_conta' />
 
-                        <p className="m-0 text-link text-position-flut position-absolute">{user_logged?.full_name}</p>
+                        <p className="m-0 text-link text-position-flut position-absolute">{user?.full_name}</p>
 
                     </div>
                     <div className="col-3 p-0">
@@ -96,7 +96,7 @@ export const Outlet_minha_conta = () => {
                         </div>
                         <input type="text" className='input_minha_conta' />
 
-                        <p className="m-0 text-link text-position-flut position-absolute">{user_logged?.tel}</p>
+                        <p className="m-0 text-link text-position-flut position-absolute">{user?.tel}</p>
 
                     </div>
                     <div className="col-3 p-0">

@@ -21,6 +21,7 @@ import { Update_email } from '../components/Update_email';
 import { Update_password } from '../components/Update_password';
 import { Update_nome } from '../components/Update_nome';
 import { Update_celular } from '../components/Update_celular';
+import { UserProvider } from '../Contexts/UserContext';
 
 export default function appRoutes(){
 
@@ -28,10 +29,12 @@ export default function appRoutes(){
         <MenuProvider>      
         <FormEditProvider>
         <CreateUserProvider>
+        <UserProvider>
         <LoginProvider>
         <PixProvider>
         <RaffleProvider>
         <ModalProvider>
+        
             <Router>
                 <Routes>
 
@@ -62,10 +65,10 @@ export default function appRoutes(){
         </RaffleProvider>
         </PixProvider>            
         </LoginProvider>                
+        </UserProvider>
         </CreateUserProvider>
         </FormEditProvider>      
         </MenuProvider>           
-
     );
 
 }
