@@ -104,7 +104,7 @@ export const Page_login = () => {
                     <Loader />
                     }
                     <div className='teste-teste'>
-                        <GoogleOAuthProvider clientId="311654823213-h1vuqnoiecbgkme0olin2eap6rrdlnn4.apps.googleusercontent.com">
+                        <GoogleOAuthProvider clientId="">
                             
                             <GoogleLogin
                                 width={"100%"}                    
