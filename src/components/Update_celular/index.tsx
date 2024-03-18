@@ -17,9 +17,7 @@ export const Update_celular = () => {
 
     const navigate = useNavigate();
 
-    const [gatilho_loader, setGatilho_loader] = useState(false);
-
-    const { update_tel, gatilho_update_tel } = useContext(UserContext);
+    const { update_tel, gatilho_update_tel, erroTel, setErroTel, gatilho_loader, setGatilho_loader } = useContext(UserContext);
 
     useEffect(() => {
 
@@ -56,11 +54,13 @@ export const Update_celular = () => {
                     <form action="" onSubmit={(data) => handleSubmit(loader_navigate)(data)}>
                         <div className="container mt-4">
                             <h6 className='m-0 text-start px-2'>Número</h6>
-                            <InputMask mask={'(99) 999999999'} {...register('tel')} type="text" className="input_login w-100 mb-1" />
+                            <InputMask mask={'(99) 999999999'} {...register('tel')} type="text" onChange={(() => {
+                                setErroTel('')
+                            })} className="input_login w-100 mb-1" />
                             {errors.tel && <p className='text-error'>{errors.tel.message}</p>}
-
                         </div>
                         <div className="mb-4">
+                            {erroTel != '' && <p className='text-error'>{erroTel}</p>}
                             <div className="div-button-green">
                                 {!gatilho_loader ?
                                 <button className='btn-green' type='submit'>Atualizar</button>                            

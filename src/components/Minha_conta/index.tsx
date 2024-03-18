@@ -20,6 +20,7 @@ export const Minha_conta = () => {
     
     } = useContext(UserContext);
 
+    
     useEffect(() => {
 
         if(gatilho_update_email){

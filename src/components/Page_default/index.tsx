@@ -28,10 +28,10 @@ export const Page_default = () => {
 
         getUser();
         getRaffles();
-    
 
     }, [])
-
+    
+    
     useEffect(() => {
 
         if(localStorage.getItem('token') === '') {
@@ -41,6 +41,7 @@ export const Page_default = () => {
         } 
 
     }, [localStorage.getItem('token')])
+    
 
     return (
         

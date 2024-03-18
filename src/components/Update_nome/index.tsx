@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Loader } from '../Loader';
 import { useForm } from 'react-hook-form';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
 
 const schema = yup.object({
@@ -13,11 +13,9 @@ const schema = yup.object({
 
 export const Update_nome = () => {
 
-    const [gatilho_loader, setGatilho_loader] = useState(false);
-
     const navigate = useNavigate();
 
-    const { gatilho_update_name, update_name, setGatilho_update_name } = useContext(UserContext);
+    const { gatilho_update_name, update_name, setGatilho_update_name, erroNome, setErroNome, gatilho_loader, setGatilho_loader } = useContext(UserContext);
 
     const {
         register,
@@ -54,12 +52,17 @@ export const Update_nome = () => {
                     <form action="" onSubmit={(data) => handleSubmit(loader_navigate)(data)}>
                         <div className="container mt-4">
                             <h6 className='m-0 text-start px-2'>Nome</h6>
-                            <input type="text" {...register("full_name")} className="input_login w-100 mb-1" />
+                            <input type="text" {...register("full_name")} onChange={() => {
+                                setErroNome('');
+                            }} className="input_login w-100 mb-1" />
                             {errors.full_name && <p className='text-error'>{errors.full_name.message}</p>}
 
                         </div>
                         <div className="mb-4">
+                            {erroNome && <p className='text-error'>{erroNome}</p>}
+
                             <div className="div-button-green">
+
                                 {!gatilho_loader ?
                                 <button className='btn-green' type='submit'>Atualizar</button>                            
                                 :

@@ -29,7 +29,7 @@ const schema = yup
 
 export const Form_create_raffle = () => {
 
-    const { gatilho_raffle, setGatilho_raffle } = useContext(RaffleContext);
+    const { gatilho_raffle, erroCreateRaffle } = useContext(RaffleContext);
 
     const {
         register,
@@ -40,7 +40,7 @@ export const Form_create_raffle = () => {
 
     const navigate = useNavigate();
 
-    const { user, getUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const { createRaffle, raffles } = useContext(RaffleContext);
 
@@ -96,8 +96,6 @@ export const Form_create_raffle = () => {
 
         setSvgRemoving(false)
 
-        //getUser();
-
     }, [raffles])
 
     useEffect(() => {
@@ -117,9 +115,6 @@ export const Form_create_raffle = () => {
                 setPrice_string((Number(price_number) * Number(tot_string)).toFixed(2))
                 setTaxa((10 * calc) / 100)
             }
-
-            
-
         }
 
     }, [watch('price_unitary'), watch('ticket_tot')])
@@ -323,6 +318,8 @@ export const Form_create_raffle = () => {
                         <p className="m-0 text-success w-text">+R$ {price_string}</p>
                     </div>
                 </div>
+
+                {erroCreateRaffle && <p className='text-error'>{erroCreateRaffle}</p>}
 
 
                 {!svgRemoving ?

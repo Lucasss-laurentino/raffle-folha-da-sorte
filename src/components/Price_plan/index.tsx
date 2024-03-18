@@ -9,8 +9,6 @@ export const Price_plan = () => {
 
         if(token != undefined && token?.length > 0) {
 
-            
-
         }
 
     }

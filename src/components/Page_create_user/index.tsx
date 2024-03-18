@@ -28,7 +28,7 @@ export const Page_create_user = () => {
 
     const { setCreateOrLogin, setTagColor, setUrl } = useContext(FormEditContext);
 
-    const { create_user, gatilho_logado, gatilho_loader, setGatilho_loader, erroCreateUser , erroUserExist} = useContext(CreateUserContext)
+    const { create_user, gatilho_logado, gatilho_loader, setGatilho_loader, erroCreateUser , erroUserExist, setErroUserExist} = useContext(CreateUserContext)
 
     const { setMenu } = useContext(MenuContext)
 
@@ -106,6 +106,9 @@ export const Page_create_user = () => {
                         className={errors.celular ? 'input_error' : 'input_login'}
                         placeholder={errors.celular ? '' : 'Digite seu email'}
                         {...register("celular")}
+                        onChange={() => {
+                            setErroUserExist('')
+                        }}
                     />
 
                     {errors.celular && <p className='text-error'>{errors.celular.message}</p>}

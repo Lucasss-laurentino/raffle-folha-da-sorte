@@ -1,6 +1,5 @@
-import { SetStateAction, createContext, useContext, useEffect, useState } from "react";
+import { SetStateAction, createContext, useState } from "react";
 import { http } from "../http";
-import { LoginContext } from "./LoginContext";
 import User from "../types/User";
 
 type UserType = {
@@ -20,6 +19,14 @@ type UserType = {
     update_tel: (data: any) => void,
     gatilho_update_tel: boolean,
     setGatilho_update_tel: React.Dispatch<SetStateAction<boolean>>,
+    erro: string,
+    setErro:  React.Dispatch<SetStateAction<string>>,
+    gatilho_loader: boolean
+    setGatilho_loader:  React.Dispatch<SetStateAction<boolean>>,
+    erroTel: string,
+    setErroTel:  React.Dispatch<SetStateAction<string>>,
+    erroNome: string,
+    setErroNome:  React.Dispatch<SetStateAction<string>>,
 
 }
 
@@ -37,15 +44,23 @@ export const UserProvider = ({children}: {children: JSX.Element}) => {
 
     const [gatilho_update_tel, setGatilho_update_tel] = useState(false);
 
+    const [erro, setErro] = useState('')
+
+    const [gatilho_loader, setGatilho_loader] = useState(false);
+
+    const [erroTel, setErroTel] = useState('')
+
+    const [erroNome, setErroNome] = useState('')
+
     const getUser = () => {
 
         http.post('/getUser').then((response) => {
-
+            
             setUser(response.data.user);
         
         }).catch((response) => {
 
-            console.log(response.data);
+            
 
         })
 
@@ -54,8 +69,15 @@ export const UserProvider = ({children}: {children: JSX.Element}) => {
     const update_email = (data: any) => {
         
         http.post('/setEmail', {data}).then((response) => {
+            
             setUser(response.data.user_);
             setGatilho_update_email(true);
+
+        }).catch((response) => {
+
+            setErro(response.response.data.erro);
+            setGatilho_loader(false);
+
         })
     
     
@@ -78,17 +100,30 @@ export const UserProvider = ({children}: {children: JSX.Element}) => {
             setUser(response.data.user_);
             setGatilho_update_name(true);
             
+        }).catch((response) => {
+            setErroNome(response.response.data.erro)
+            setGatilho_loader(false);
         })
     
     }
 
     const update_tel = (data: any) => {
 
-        http.post('/setTel', {data, user}).then((response) => {
+        const sem_parenteses_1 = data.tel.split('(')
+        const sem_parenteses_2 = sem_parenteses_1[1].split(')')
+        const tel_string = sem_parenteses_2.join('');
+        const tel = tel_string.split(' ').join('')
+
+        http.post('/setTel', {tel, user}).then((response) => {
 
             setUser(response.data.user_);
             setGatilho_update_tel(true);
 
+        }).catch((response) => {
+
+            setErroTel(response.response.data.erro);
+            setGatilho_loader(false)
+        
         })
 
     }
@@ -111,6 +146,14 @@ export const UserProvider = ({children}: {children: JSX.Element}) => {
             update_tel,
             gatilho_update_tel,
             setGatilho_update_tel,
+            erro,
+            setErro,
+            gatilho_loader,
+            setGatilho_loader,
+            erroTel,
+            setErroTel,
+            erroNome,
+            setErroNome,
         }}>
             {children}
         </UserContext.Provider>

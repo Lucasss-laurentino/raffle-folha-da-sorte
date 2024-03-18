@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import './index.css';
 import { FormEditContext } from '../../Contexts/FormEditContext';
 import { useForm } from "react-hook-form"
@@ -8,7 +8,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google' ;
 import { jwtDecode } from 'jwt-decode';
 import { LoginContext } from '../../Contexts/LoginContext';
 import { MenuContext } from '../../Contexts/MenuContext';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { Loader } from '../Loader';
 
 const schema = yup

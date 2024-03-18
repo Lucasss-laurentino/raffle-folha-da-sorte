@@ -37,10 +37,11 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
         http.post('/login', { data }).then((response) => {
             
             localStorage.setItem('token', response.data.token);
-            console.log(response)
             setGatilho_login(true);
+            setUser(response.data.user);
 
         }).catch((response) => {
+            
             setErro_login(response.response.data.message)
             setGatilho_loader_login(false)
         
@@ -59,7 +60,6 @@ export const LoginProvider = ({ children }: { children: JSX.Element }) => {
         })
 
     }
-
 
     const logout = (setMenu: React.Dispatch<SetStateAction<boolean>>) => {      
         localStorage.setItem('token', '');

@@ -10,6 +10,8 @@ type CreateUserType = {
     setGatilho_loader: React.Dispatch<SetStateAction<boolean>>,
     erroCreateUser: string,
     erroUserExist: string,
+    setErroUserExist: React.Dispatch<SetStateAction<string>>,
+
 }
 
 export const CreateUserContext = createContext<CreateUserType>(null!);
@@ -38,7 +40,6 @@ export const CreateUserProvider = ({children}: {children: JSX.Element}) => {
 
                 setErroUserExist(response.response.data.erro)
                 setGatilho_loader(false)
-                //setErroUserExist(response.data.erro)
 
             })
 
@@ -54,7 +55,7 @@ export const CreateUserProvider = ({children}: {children: JSX.Element}) => {
 
     return (
 
-        <CreateUserContext.Provider value={{create_user, gatilho_logado, setGatilho_logado, gatilho_loader, setGatilho_loader, erroCreateUser, erroUserExist}}>
+        <CreateUserContext.Provider value={{create_user, gatilho_logado, setGatilho_logado, gatilho_loader, setGatilho_loader, erroCreateUser, erroUserExist, setErroUserExist}}>
             {children}
         </CreateUserContext.Provider>
 

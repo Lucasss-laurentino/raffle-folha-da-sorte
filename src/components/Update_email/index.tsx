@@ -17,9 +17,7 @@ export const Update_email = () => {
 
     const navigate = useNavigate();
 
-    const { update_email, gatilho_update_email } = useContext(UserContext);
-
-    const [gatilho_loader, setGatilho_loader] = useState(false);
+    const { update_email, gatilho_update_email, erro, setErro, gatilho_loader, setGatilho_loader } = useContext(UserContext);
 
     useEffect(() => {
 
@@ -29,6 +27,7 @@ export const Update_email = () => {
         }
 
     }, [gatilho_update_email])
+
 
     const loader_navigate = (data: any) => {
 
@@ -61,7 +60,13 @@ export const Update_email = () => {
                         </div>
                         <div className="container mt-4">
                             <h6 className='m-0 text-start px-2'>Informe o email novo</h6>
-                            <input type="text" className="input_login w-100 mb-1" {...register('email_novo')} />
+                            <input type="text"
+                             className="input_login w-100 mb-1" 
+                             {...register('email_novo')} 
+                             onChange={() => {
+                                setErro('')
+                             }}
+                            />
                             {errors.email_novo && <p className='text-error'>{errors.email_novo.message}</p>}
 
                         </div>
@@ -71,6 +76,8 @@ export const Update_email = () => {
                             {errors.repetir_email_novo && <p className='text-error'>{errors.repetir_email_novo.message}</p>}
 
                         </div>
+
+                        {erro != '' && <p className='text-error'>{erro}</p>}
 
                         <div className="mb-4">
                             <div className="div-button-green">

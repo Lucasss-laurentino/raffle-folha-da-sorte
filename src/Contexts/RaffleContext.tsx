@@ -3,7 +3,6 @@ import RaffleType from "../types/RaffleType";
 import { http } from "../http";
 import PromoType from "../types/PromoType";
 import { PixContext } from "./PixContext";
-import { LoginContext } from "./LoginContext";
 import { UserContext } from "./UserContext";
 
 type Raffle_Type = {
@@ -24,6 +23,7 @@ type Raffle_Type = {
     setRaffId: React.Dispatch<SetStateAction<string>>,
     gatilho_raffle: boolean,
     setGatilho_raffle: React.Dispatch<SetStateAction<boolean>>,
+    erroCreateRaffle: string,
 }
 
 export const RaffleContext = createContext<Raffle_Type>(null!);
@@ -46,13 +46,9 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
     
     const [gatilho_raffle, setGatilho_raffle] = useState(false);
 
+    const [erroCreateRaffle, setErroCreateRaffle] = useState('');
+
     const createRaffle = (data: any, image: any) => {
-
-        const token = localStorage.getItem('token');
-
-        if (token) {
-            //validate_token(token)
-        }
 
         if (user != null && user.admin) {
 
@@ -96,6 +92,8 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
                 setRaffles([response.data.raffles]);
                 setGatilho_raffle(true);
                 
+            }).catch((response) => {
+                setErroCreateRaffle('Erro ao criar rifa')
             })
 
         }
@@ -105,18 +103,26 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
     const getRaffles = () => {
         http.get('/raffles').then((response) => {
             setRaffles([...response.data.raffles]);
+        }).catch((response) => {
+
         })
     }
 
     const getRaffle = (id_raffle: string | undefined) => {
+
         http.get(`/raffle/${id_raffle}`).then((response) => {
             setRaffle(response.data.raffle);
+        }).catch((response) => {
+
         })
+
     }
 
     const getMyRaffles = () => {
         http.get('/getMyRaffles').then((response) => {
             setMyRaffles([...response.data.myRaffles]);
+        }).catch((response) => {
+
         })
     }
 
@@ -158,6 +164,8 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
         http.delete(`/deleteRaffle/${raffle_id}`).then((response) => {
             setMyRaffles([...response.data.myRaffles]);
             setRaffles([...response.data.allRaffles]);
+        }).catch((response) => {
+
         })
 
     }
@@ -166,6 +174,8 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
 
         http.post(`/delete_promo`, { id_promo }).then((response) => {
             setPromotions([...response.data.allPromo]);
+        }).catch((response) => {
+            
         })
 
     }
@@ -198,6 +208,7 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
             setRaffId,
             gatilho_raffle,
             setGatilho_raffle,
+            erroCreateRaffle,
         }}>
             {children}
         </RaffleContext.Provider>
