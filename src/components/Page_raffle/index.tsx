@@ -207,21 +207,21 @@ export const Page_raffle = () => {
                     <div className="promo">
 
                         <p className='promo-title'> 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-megaphone mx-2" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-megaphone mx-2 icon-promo" viewBox="0 0 16 16">
                                 <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 75 75 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0m-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233q.27.015.537.036c2.568.189 5.093.744 7.463 1.993zm-9 6.215v-4.13a95 95 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A61 61 0 0 1 4 10.065m-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68 68 0 0 0-1.722-.082z"/>
                             </svg>
                         PROMOÇÕES
                         
                         </p>
 
-                        <h6>Aproveite o desconto!</h6>
+                        <h6 className=''>Aproveite o desconto!</h6>
 
                         {promotions.map((promotion) => {
 
                             return (
                                 <React.Fragment key={promotion._id}>
                                     <div className="row justify-content-center align-items-center text-center">
-                                        <div className={promo_active && promo_active_id === promotion._id ? "col-6 col-sm-5 box_promo_cotas_active" : "col-6 col-sm-5 box_promo_cotas"} onClick={() => {
+                                        <div className={promo_active && promo_active_id === promotion._id ? "col-6 col-sm-5 box_promo_cotas_active hov-mouse" : "col-6 col-sm-5 box_promo_cotas hov-mouse"} onClick={() => {
                                             calc_cotas_promo(promotion?.ticket_quantity, promotion?.price_together, promotion._id)
                                         }}>
                                             <p className="text_promo_cotas">{promotion?.ticket_quantity} por <strong className={promo_active && promo_active_id === promotion._id ? 'text-white' : 'color_strong'}>{promotion?.price_together}</strong></p>
@@ -242,7 +242,7 @@ export const Page_raffle = () => {
                 <div className="promo">
 
                     <p className='promo-title'> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-ticket mx-2" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-ticket mx-2 icon-promo" viewBox="0 0 16 16">
                             <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5z"/>
                         </svg>
                         BILHETES    
@@ -250,7 +250,7 @@ export const Page_raffle = () => {
 
                     <div className="row justify-content-center align-items-center text-center">
 
-                        <div className="col-2 box_promo_cotas" onClick={() => {
+                        <div className="col-2 box_promo_cotas hov-mouse" onClick={() => {
                             calc_cotas_quantity(5, raffle?.price_unitary)
                         }}>
 
@@ -258,7 +258,7 @@ export const Page_raffle = () => {
 
                         </div>
 
-                        <div className="col-2 box_promo_cotas" onClick={() => {
+                        <div className="col-2 box_promo_cotas hov-mouse" onClick={() => {
                             calc_cotas_quantity(10, raffle?.price_unitary)
                         }}>
 
@@ -266,7 +266,7 @@ export const Page_raffle = () => {
 
                         </div>
 
-                        <div className="col-2 box_promo_cotas" onClick={() => {
+                        <div className="col-2 box_promo_cotas hov-mouse" onClick={() => {
                             calc_cotas_quantity(15, raffle?.price_unitary)
                         }}>
 
@@ -274,7 +274,7 @@ export const Page_raffle = () => {
 
                         </div>
 
-                        <div className="col-2 box_promo_cotas" onClick={() => {
+                        <div className="col-2 box_promo_cotas hov-mouse" onClick={() => {
                             calc_cotas_quantity(20, raffle?.price_unitary)
                         }}>
 
@@ -294,7 +294,7 @@ export const Page_raffle = () => {
 
                     <p className='promo-title mb-2'>
                     
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-card-checklist mx-2" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-card-checklist mx-2 icon-promo" viewBox="0 0 16 16">
                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
                             <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
                         </svg>
@@ -315,7 +315,7 @@ export const Page_raffle = () => {
 
                 <div className="promo container d-flex justify-content-around align-items-center">
 
-                    <div className="btn_qntt_cotas" onClick={() => {
+                    <div className="btn_qntt_cotas hov-mouse" onClick={() => {
                         oneLass()
                     }}>
 
@@ -328,7 +328,7 @@ export const Page_raffle = () => {
                     </div>
                     <div className=""> {quantityCotas} </div>
 
-                    <div className="btn_qntt_cotas" onClick={() => {
+                    <div className="btn_qntt_cotas hov-mouse" onClick={() => {
                         oneMore();
                     }}>
 

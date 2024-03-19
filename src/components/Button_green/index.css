@@ -26,6 +26,29 @@
     text-decoration: none;
 }
 
+@media (min-width: 576px) {
+    
+    .btn-green {
+        width: 60%;
+        font-size: 18px;
+        margin-top: 5%;
+
+    }
+
+}
+
+@media (min-width: 1000px) {
+    
+    .btn-green {
+        width: 59%;
+        height: 63px;
+        font-size: 26px;
+        margin-top: 7%;
+    }
+
+}
+
+
 .btn-green:active {
 
     color: #738E38;

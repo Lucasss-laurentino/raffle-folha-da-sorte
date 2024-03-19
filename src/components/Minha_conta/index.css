@@ -1,81 +1,30 @@
-.div-edit-user {
-    border: 1px solid rgb(184, 184, 184);
-    border-radius: 10px;
+.icon-wid {
+    width: 30px;
+    height: 30px;
 }
 
-.div-inputs {
-    width: 100%;
-    height: auto;
-    text-align: center;
-}
+@media(min-width: 768px) {
 
-.input_minha_conta {
+    .icon-wid {
+        width: 50px;
+        height: 50px;
+    }
 
-    width: 100%;
-    padding: 9px;
-    background-color:#E9ECEF;
-    border: none;
-
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-
-    margin-top: 7px;
-    margin-bottom: 10%;
-
-    outline: none;
-}
-
-.position-icon {
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-
-    margin: 0;
-    top: 27%;
-    left: 16%;
+    .title-minha-conta {
+        font-size: 25px;
+    }
 
 }
 
-.text-position-flut {
-    
-    width: 50%;
-    top: 30%;
-    left: 36%;
+@media(min-width: 1000px) {
 
-    text-wrap: nowrap;
+    .icon-wid {
+        width: 60px;
+        height: 60px;
+    }
 
-}
-.width-div {
-    width: 100%;
-}
+    .title-minha-conta {
+        font-size: 30px;
+    }
 
-.btn-link {
-
-    padding-top: 5%;
-
-}
-
-.alt-alterar {
-    height: auto;
-    text-align: start;
-}
-
-.alt-alterar > .link {
-    padding-top: 10px;
-}
-
-.btn-alterar {
-
-    width: 100%;
-
-    color: white;
-    background-color: #738E38;
-
-    border: none;
-
-    margin-top: 3%;
-    padding: 10%;
-
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
 }

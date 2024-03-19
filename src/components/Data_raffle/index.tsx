@@ -43,24 +43,24 @@ export const Data_raffle = () => {
 
             <Modal_create_promo show={show} setShow={setShow} raff_id={id} />
 
-            <div className="container">
+            <div className="container div-title-raffle">
                 <h3 className='text-center my-4'>{raffle?.title}</h3>
             </div>
 
             <div className="container my-5">
                 <div className="click div-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" onClick={() => copy()} width="16" height="16" fill="#738E38" className="bi bi-copy icon-copy" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" onClick={() => copy()} fill="#738E38" className="bi bi-copy icon-copy hov-mouse" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
                     </svg>
-                    <p className='m-0 px-2 text-link'>{`http://localhost:3000/detalhes/${raffle?._id}`}</p>
+                    <p className='m-0 px-2 text-link hov-mouse' onClick={() => copy()}>{`http://localhost:3000/detalhes/${raffle?._id}`}</p>
                 </div>
                 <div className="container d-flex justify-content-center align-items-center">
-                    <p className="m-0 text-secondary text-link text-center">Copie e envie o link da sua rifa</p>
+                    <p className="m-0 text-secondary text-link text-center text-link-copie">Copie e envie o link da sua rifa</p>
                 </div>
             </div>
 
-            <div className="row w-100 justify-content-end">
-                <div className="col-5 p-0 m-2 card-detalhes-rifa">
+            <div className="row w-100 justify-content-end justify-content-sm-center">
+                <div className="col-5 col-sm-5 col-md-4 p-0 m-2 card-detalhes-rifa">
                     <div className="container mt-3">
                         <p className="text-detalhes-bilhete m-0">Bilhetes vendidos</p>
                     </div>
@@ -68,7 +68,7 @@ export const Data_raffle = () => {
                         <h3 className='text-center'>{raffle?.bilhetes_vendidos}</h3>
                     </div>
                 </div>
-                <div className="col-5 p-0 m-2 card-detalhes-rifa">
+                <div className="col-5 col-sm-5 col-md-4 p-0 m-2 card-detalhes-rifa">
                     <div className="container mt-3">
                         <p className="text-detalhes-bilhete m-0">Bilhetes sobrando</p>
                     </div>
@@ -78,8 +78,8 @@ export const Data_raffle = () => {
                 </div>
             </div>
 
-            <div className="row w-100 justify-content-end">
-                <div className="col-5 p-0 m-2 card-detalhes-rifa">
+            <div className="row w-100 justify-content-end justify-content-sm-center">
+                <div className="col-5 col-sm-5 col-md-4 p-0 m-2 card-detalhes-rifa">
                     <div className="container mt-3">
                         <p className="text-detalhes-bilhete m-0">Valor arrecadado</p>
                     </div>
@@ -87,7 +87,7 @@ export const Data_raffle = () => {
                         <h3 className='text-center'>R$ {raffle?.valor_arrecadado}</h3>
                     </div>
                 </div>
-                <div className="col-5 p-0 m-2 card-detalhes-rifa">
+                <div className="col-5 col-sm-5 col-md-4 p-0 m-2 card-detalhes-rifa">
                     <div className="container mt-3">
                         <p className="text-detalhes-bilhete m-0">Compradores</p>
                     </div>
@@ -100,12 +100,12 @@ export const Data_raffle = () => {
             <hr />
 
             <div className="container">
-                <h3 className='text-center my-4'>Promoções</h3>
+                <h3 className='text-center my-4 text-promo'>Promoções</h3>
             </div>
 
             {promotions.map((promotion) => {
                 return (
-                    <div key={promotion._id} className="row w-100 justify-content-end">
+                    <div key={promotion._id} className="row w-100 justify-content-end my-2">
                         <div className="row justify-content-center align-items-center text-center">
                             <div className="col-10 col-sm-5 card-data-raffle">
                                 <div className="d-flex justify-content-end p-2 align-items-center text-danger" >

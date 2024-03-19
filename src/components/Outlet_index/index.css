@@ -14,7 +14,96 @@
 
     text-align: center;
 
-    margin-top: 17%;
+}
+
+
+@media(min-width: 200px){
+    .div-text-main {
+
+        margin-top: 17%;
+
+    }
+
+    .porque {
+
+        margin: 10%;
+        
+    }
+
+}
+
+@media(min-width: 576px){
+
+    .div-text-main {
+        margin-top: 10%;
+
+    }
+
+    .porque {
+
+        font-size: 30px;
+        
+    }
+    
+    .title-marketing {
+        font-size: 47px;
+    }
+
+    .text-marketing > p {
+        font-size: 20px;
+    }
+}
+
+@media(min-width: 768px){
+
+    .div-text-main> h2 {
+        
+        font-size: 40px;
+
+    }
+
+    .div-text-main> p {
+        
+        font-size: 20px;
+
+    }
+
+    .porque {
+
+        font-size: 40px;
+        
+    }
+
+}
+
+@media(min-width: 1000px){
+
+    .div-text-main> h2 {
+        
+        font-size: 57px;
+
+    }
+
+    .div-text-main> p {
+        
+        font-size: 27px;
+
+    }
+
+    .porque {
+
+        font-size: 57px;
+        
+    }
+
+    .title-marketing {
+        font-size: 77px;
+    }
+
+    .text-marketing > p {
+        font-size: 26px;
+    }    
+
 }
 
 .div-text-main-hiden
@@ -79,7 +168,15 @@
 
     flex-direction: column;
 
-    margin-bottom: 15%;
+    margin-bottom: 8%;
+}
+
+.div-green > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .btn-div-green {
@@ -94,4 +191,36 @@
     font-weight: 500;
 
     padding: 5px;
+}
+
+@media(min-width: 576px) {
+
+    .div-green > div > h2 {
+        font-size: 33px;
+    }
+
+    .btn-div-green {
+        width: 40%;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+}
+
+@media(min-width: 1000px) {
+
+    .div-green > div > h2 {
+        font-size: 60px;
+    }
+
+    .div-green > div > p {
+        font-size: 26px;
+    }
+
+    .btn-div-green {
+        width: 50%;
+        padding: 15px;
+        font-size: 20px;
+    }
+
 }

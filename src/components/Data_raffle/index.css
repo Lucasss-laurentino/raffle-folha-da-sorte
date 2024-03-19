@@ -48,3 +48,79 @@
 :root {
     --toastify-color-success: #738E38;
 }
+
+.div-link  > svg {
+
+    width: 16px;
+    height: 16px;
+
+}
+
+.div-link  > p {
+
+    text-align: center;
+
+}
+
+
+@media(min-width: 576px) {
+
+    .text-detalhes-bilhete {
+        font-size: 16px;
+    }
+
+}
+
+@media(min-width: 768px) {
+
+    .div-title-raffle > h3 {
+
+        font-size: 36px;
+
+    }
+
+    .div-link  > svg {
+
+        width: 24px;
+        height: 24px;
+    
+    }
+
+    .text-detalhes-bilhete {
+        font-size: 20px;
+    }
+
+    .div-link  > p {
+
+        font-size: 15px;
+        text-align: center;
+    
+    }    
+
+    .text-link-copie {
+        font-size: 15px;
+    }
+
+}
+
+@media(min-width: 1100px) {
+
+    .text-detalhes-bilhete {
+        font-size: 25px;
+    }
+
+    .text-promo {
+        font-size: 40px;
+    }
+
+    .text_promo_cotas {
+        font-size: 20px;
+    }
+
+    .card-data-raffle {
+
+        
+
+    }
+
+}

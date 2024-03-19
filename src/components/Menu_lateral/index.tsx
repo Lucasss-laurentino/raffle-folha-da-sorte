@@ -127,7 +127,7 @@ export const Menu_lateral = () => {
                             </svg>
                         </div>
                         <div className="text_item_list">
-                            Sobre nós
+                            <Link to='#' className='link_menu' >Sobre Nós</Link>
                         </div>
                     </li>
 
@@ -139,7 +139,7 @@ export const Menu_lateral = () => {
                             </svg>
                         </div>
                         <div className="text_item_list">
-                            Central de ajuda
+                            <Link to='#' className='link_menu' >Central de ajuda</Link>
                         </div>
                     </li>
                     {localStorage.getItem('token') &&

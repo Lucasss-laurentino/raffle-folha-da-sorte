@@ -8,3 +8,33 @@
     background-position: center;
     background-size: contain;
 }
+
+@media(min-width: 576px) {
+
+    .container-img-index {
+
+        margin: 5%;
+        background-size: 60%;
+
+    }
+}
+
+@media(min-width: 768px) {
+    
+    .container-img-index {
+
+        margin: 6%;
+        background-size: 60%;
+        height: 58vh;
+    }
+}
+
+@media(min-width: 1000px) {
+    
+    .container-img-index {
+
+        margin: 8%;
+        background-size: 60%;
+        height: 78vh;
+    }
+}

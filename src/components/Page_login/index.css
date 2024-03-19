@@ -14,3 +14,34 @@
 
     margin-top: 3%;
 }
+.text-login {
+    margin-bottom: 10%;
+}
+
+@media(min-width: 768px) {
+    .text-login {
+        margin-bottom: 7%;
+        font-size: 17px;
+    }
+
+    .input_login {
+        margin-bottom: 5%;
+    }
+
+    .esqueceu-senha {
+        font-size: 17px;
+    }
+    
+}
+@media(min-width: 1000px) {
+    .text-login {
+        margin-bottom: 4%;
+        font-size: 20px;
+    }
+
+    .esqueceu-senha {
+        font-size: 23px;
+    }
+
+    
+}

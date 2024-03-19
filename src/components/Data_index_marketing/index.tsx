@@ -10,7 +10,7 @@ export const Data_index_marketing = () => {
                     <div className="top-left">
                         <h1 className='title-marketing'><p className='text-destac'>+10 </p> mil</h1> 
                         <div className="text-marketing">
-                            <div className="text">
+                            <div className="text-marketing">
                                 <p className='text-center m-0'>Prêmios sorteados na plataforma</p>     
                             </div>
                         </div>

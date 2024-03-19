@@ -183,9 +183,12 @@ export const RaffleProvider = ({ children }: { children: JSX.Element }) => {
     const createPromo = (data: any) => {
 
         http.post('/createPromo', { data, raffId }).then((response) => {
+        
             console.log(response.data);
             setPromotions([...response.data.promotions]);
+        
         })
+        
 
     }
 

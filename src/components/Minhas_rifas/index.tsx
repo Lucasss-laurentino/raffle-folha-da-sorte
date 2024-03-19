@@ -4,30 +4,48 @@ import { useContext, useEffect } from 'react';
 import { RaffleContext } from '../../Contexts/RaffleContext';
 import React from 'react';
 import { UserContext } from '../../Contexts/UserContext';
+import {Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Minhas_rifas = () => {
 
-    const { myRaffles, getMyRaffles, deleteRaffle } = useContext(RaffleContext);
+    const { myRaffles, getMyRaffles, deleteRaffle, gatilho_raffle, setGatilho_raffle } = useContext(RaffleContext);
     const { user } = useContext(UserContext);
 
     useEffect(() => {
         getMyRaffles();
     }, [])
 
+    useEffect(() => {
+
+        if(gatilho_raffle){
+
+            toast.success('Rifa criada !', {
+                position: "bottom-right",
+                autoClose: 1300,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });    
+
+            setGatilho_raffle(false);
+
+        }
+
+    }, [gatilho_raffle]);
+
     return (
 
         <>
+            <ToastContainer limit={1}/>
+
             <div className="container">
                 <div className="container my-3 div-title-campanha">
                     <h1>Minhas Rifas</h1>
-                </div>
-                <div className="row justify-content-center my-3">
-                    <div className="col-10 d-flex align-items-center div-search">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#9c9b9b" className="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                        </svg>
-                        <input className='input-search' type="text" placeholder='Pesquisar' />
-                    </div>
                 </div>
                 <div className="row justify-content-center my-4">
                     <div className="col-10 d-flex justify-content-center align-items-center">

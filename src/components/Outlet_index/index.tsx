@@ -9,7 +9,6 @@ import {Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CreateUserContext } from '../../Contexts/CreateUserContext';
 import { LoginContext } from '../../Contexts/LoginContext';
-import { RaffleContext } from '../../Contexts/RaffleContext';
 
 export const Outlet_index = () => {
 
@@ -21,8 +20,6 @@ export const Outlet_index = () => {
     const { gatilho_logado, setGatilho_logado } = useContext(CreateUserContext);
 
     const { gatilho_login } = useContext(LoginContext);
-
-    const { gatilho_raffle } = useContext(RaffleContext);
 
     const [animateHidenOrShowListSorted, setAnimateHidenOrShowListSorted] = useState(''); 
     const [animateOld, setAnimateOld] = useState('d-none'); 
@@ -46,24 +43,6 @@ export const Outlet_index = () => {
             setGatilho_logado(false);
         }
 
-        if(gatilho_raffle){
-
-            toast.success('Rifa criada !', {
-                position: "bottom-right",
-                autoClose: 1300,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-                transition: Bounce,
-            });    
-
-            setGatilho_logado(false);
-
-        }
-
     }, [])
 
     return (
@@ -72,8 +51,8 @@ export const Outlet_index = () => {
             <ToastContainer limit={1}/>
 
             <div className='div-caps-main'>
-                <div className="div-text-main">
-                    <h2>Crie sua Rifa online em poucos minutos</h2>
+                <div className="div-text-main col-10 col-sm-8">
+                    <h2 className=''>Crie sua Rifa online em poucos minutos</h2>
                     <p className="text-bottom-title">Potencialize suas rifas ! Crie e gerencie rifas de forma simples</p>
                 </div>
             </div>
@@ -82,22 +61,24 @@ export const Outlet_index = () => {
             <div className={animateHidenOrShowListSorted}>
                 <Img_background_index />
 
-                <div className="container-fluid p-0 div-green">
-                    <h2 className='mt-4 mb-2 text-center'>Tenha liberdade</h2>
-                    <p className='m-0 text-center'>Todo o dinheiro arrecadado por suas campanhas vai diretamente pra você</p>
-                
-                    <div className="d-flex justify-content-center align-items-center">
-                        <button className='my-4 btn-div-green'>Quero criar minha rifa</button>
+                <div className="row w-100 div-green">
+                    <div className="col-12">
+                        <h2 className='mt-4 mb-2 text-center'>Tenha liberdade</h2>
+                        <p className='m-0 text-center'>Todo o dinheiro arrecadado por suas campanhas vai diretamente pra você</p>
+                    
+                        <div className="d-flex justify-content-center align-items-center">
+                            <button className='my-4 btn-div-green'>Quero criar minha rifa</button>
+                        </div>                        
                     </div>
                 </div>
 
                 <div className="container p-0">
-                    <h3 className='text-center'>Por que escolher nossa plataforma ?</h3>
+                    <h3 className='text-center porque'>Por que escolher nossa plataforma ?</h3>
                 </div>
 
                 <Data_index_marketing />
 
-                <Price_plan/>
+                <Button_green text='Crie sua rifa' btn_function={() => {}}/>
             </div>
 
             <div className={animateOld}>

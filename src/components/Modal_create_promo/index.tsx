@@ -11,7 +11,6 @@ type Props = {
     show: boolean,
     setShow: React.Dispatch<SetStateAction<boolean>>,
     raff_id: string | undefined,
-
 }
 
 const schema = yup
@@ -26,6 +25,7 @@ export const Modal_create_promo = ({ show, setShow, raff_id }: Props) => {
     const { promotions, createPromo, setRaffId } = useContext(RaffleContext);
 
     useEffect(() => {
+        
         setShow(false)
 
         if(raff_id){

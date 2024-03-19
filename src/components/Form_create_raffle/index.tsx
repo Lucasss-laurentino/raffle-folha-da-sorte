@@ -129,7 +129,7 @@ export const Form_create_raffle = () => {
             <form className='' onSubmit={(data) => handleSubmit(form_data)(data)}>
 
                 <h1>Criar Sorteio</h1>
-                <p className='color-text'>Insira os dados de como deseja seu sorteio abaixo:</p>
+                <p className='color-text text-form-raffle'>Insira os dados de como deseja seu sorteio abaixo:</p>
 
                 <div className="form-control-login">
                     <span className='span_login'>Título</span>

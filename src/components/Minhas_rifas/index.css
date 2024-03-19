@@ -42,3 +42,30 @@
 
     border-radius: 8px;
 }
+
+@media(min-width: 576px) {
+    .header-card-raffle > img {
+        width: 60%;
+    }
+}
+
+@media(min-width: 1000px){
+
+    .div-title-campanha > h1 {
+        font-size: 50px;
+    }
+
+    .btn-criar-campanha {
+        width: 60%;
+        padding: 14px;
+        font-size: 20px ;
+    }
+
+    .item-list-raffle {
+        display: flex;
+        justify-content: center;
+    }
+    .card-raffle {
+        width: 60%;
+    }
+}

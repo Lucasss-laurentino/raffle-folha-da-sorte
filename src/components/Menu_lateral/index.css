@@ -65,6 +65,29 @@
     border-bottom: 1px solid #d7d8da;
 }
 
+@media(min-width: 576px) {
+
+    .div_menu_lateral {
+
+        width: 50%;
+        left: 40%;
+        
+    }
+
+    .link_menu {
+        font-size: 20px;
+    }
+
+}
+
+@media(min-width: 1000px) {
+
+    .link_menu {
+        font-size: 26px;
+    }
+
+}
+
 .icon_item {
 
     color: #738E38;

@@ -10,14 +10,16 @@ export const Form = () => {
     return (
         <>
             <>
-                <div className="login_header">
-                    <div className="div_logo_login" onClick={() => window.location.href = '/'}>
-                        <img src="../../../img/logo_vazia.png" className='logo_img' alt="" />
-                    </div>
-                </div>
-                <div className="login_body">
+                <div className="container form-container mt-3">
+                <div className="login_header p-0">
                     <div className='div_form_login'>
-                            <Outlet />                           
+                        <div className="container d-flex justify-content-start">
+                            <div className="div_logo_login m-0 d-flex justify-content-start justify-content-sm-center justify-content-md-end" onClick={() => window.location.href = '/'}>
+                                <img src="../../../img/logo_vazia.png" className='logo_img_form' alt="" />
+                            </div>
+                        </div>
+                        <Outlet />                           
+                    
                     </div>
                     <hr />
 
@@ -26,8 +28,9 @@ export const Form = () => {
                     </div>
                     <hr />
                     <div className="d-flex justify-content-center align-items-center">
-                        <p className='p-0 latest_text'>Protegido por reCAPTCHA <strong className='color_strong'>Privacidade</strong> <strong className="color_strong">Termos</strong></p>
+                        <p className='p-0 text-respons my-2 pb-3'>Protegido por reCAPTCHA <strong className='color_strong'>Privacidade</strong> <strong className="color_strong">Termos</strong></p>
                     </div>
+                </div>
                 </div>
             </>
         </>

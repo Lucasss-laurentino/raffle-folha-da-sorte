@@ -66,7 +66,7 @@ export const Page_login = () => {
 
                 <div className="div_title_login">
                     <h2>Bem-vindo de volta!</h2>
-                    <p className='color-text'>Insira suas informações abaixo para entrar na sua conta</p>
+                    <p className='color-text text-login'>Insira suas informações abaixo para entrar na sua conta</p>
                 </div>
 
                 <div className="form-control-login">
@@ -95,7 +95,7 @@ export const Page_login = () => {
                     </div>
                     }
                     <div className="d-flex justify-content-end align-items-center wid">
-                        <p className="m-0 color-text">Esqueceu sua senha ?</p>
+                        <p className="m-0 color-text esqueceu-senha">Esqueceu sua senha ?</p>
                     </div>
                     
                     {!gatilho_loader_login ?

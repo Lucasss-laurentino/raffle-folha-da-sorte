@@ -23,6 +23,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex-direction: column;
 }
 
 .div_form_login > form {
@@ -90,8 +92,6 @@
     align-items: center;
 }
 
-
-
 .text_form_login {
 
     width: 90%;
@@ -118,6 +118,7 @@
 
     text-decoration: none;
 }
+
 .btn_criar_conta:active {
 
     color: #738E38;
@@ -133,9 +134,36 @@
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 }
 
-
 .latest_text {
 
     font-size: 12px !important;
     padding-left: 5%;
+}
+
+@media(min-width: 1100px) {
+    .div_title_login > h2 {
+
+        font-size: 50px;
+
+    }
+
+    .span_login {
+        font-size: 20px;
+    }
+
+    .input_login {
+        height: 70px;
+        font-size: 20px;
+        margin-bottom: 5%;
+    }
+
+    .text_form_login {
+        font-size: 20px;
+    }
+
+    .btn_criar_conta {
+        height: 55px;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
 }

@@ -1,0 +1,32 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo_img_form {
+    width: 50%;
+}
+
+.text-respons {
+    font-size: 13px;
+}
+
+@media(min-width: 576px) {
+    .logo_img_form {
+        width: 60%;
+    }
+}
+@media(min-width: 1000px) {
+    .logo_img_form {
+        width: 80%;
+    }
+}
+
+@media(min-width: 1100px) {
+
+    .text-respons {
+        font-size: 20px;
+    }
+
+}
