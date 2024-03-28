@@ -43,5 +43,5 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Gerar bilhetes
 - [ ] Sortear bilhete
 - [ ] Validar pagamento pix
-- [ ] Disponivilizar saque do lucro da rifa (Para o usuario que assinar um plano e ter a possibilidade de criar sua própria rifa)
+- [ ] Disponibilizar saque do lucro da rifa (Para o usuario que assinar um plano e ter a possibilidade de criar sua própria rifa)
  
