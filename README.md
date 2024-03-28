@@ -35,3 +35,13 @@
 ![ezgif com-speed](https://github.com/Lucasss-laurentino/raffle-folha-da-sorte/assets/96303722/0f24eeb9-930a-4406-a297-9a9ee3dfa3b2)
 
 </div>
+
+### Ajustes e melhorias
+
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+
+- [ ] Gerar bilhetes
+- [ ] Sortear bilhete
+- [ ] Validar pagamento pix
+- [ ] Disponivilizar saque do lucro da rifa (Para o usuario que assinar um plano e ter a possibilidade de criar sua própria rifa)
+ 
