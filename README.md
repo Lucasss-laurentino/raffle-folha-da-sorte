@@ -29,5 +29,9 @@
 ### Compra de bilhetes gerando qr code
 
 ![ezgif com-speed](https://github.com/Lucasss-laurentino/raffle-folha-da-sorte/assets/96303722/3d12120d-5509-4d89-83f2-c2c60924a6b9)
-  
+
+### Minha conta, minhas rifas, excluir promoção e cadastrar promoção
+
+![ezgif com-speed](https://github.com/Lucasss-laurentino/raffle-folha-da-sorte/assets/96303722/0f24eeb9-930a-4406-a297-9a9ee3dfa3b2)
+
 </div>
