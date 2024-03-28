@@ -17,3 +17,9 @@
   <img alt='react' src='https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white' />
 
 </div>
+
+# 📸 Telas e visuais
+
+![raiz-folha-da-sorte](https://github.com/Lucasss-laurentino/raffle-folha-da-sorte/assets/96303722/cd537613-ce71-481a-8939-5201fbc5e091)
+
+![ezgif com-speed](https://github.com/Lucasss-laurentino/raffle-folha-da-sorte/assets/96303722/3d12120d-5509-4d89-83f2-c2c60924a6b9)
